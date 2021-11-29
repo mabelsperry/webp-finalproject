@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <?php
+   
+   require("conn.php");
+
+   $queryID = "SELECT `users`.`userID` FROM `users` WHERE `users`.`username` = '$_SESSION['name']';"
+   $ID = $queryID[0];
+   $queryTasks = "SELECT `tasks`.*, `users`.`userID` FROM `tasks` LEFT JOIN `users` ON `tasks`.`userID` = `users`.`userID` WHERE `users`.`userID` = '$ID';"
+
+   ?>
+  
+  <head>
+    <meta charset="utf-8">
+    <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <body>
+    <div class="sidebar">
+      <div><p><strong>Task List</strong></p></div>
+      <div><p><strong>Calendar</strong></p></div>
+    </div>
+
+    <div class="content-area">
+      <?php foreach ($queryTasks as $task) : ?>
+      <div><h1>
+	  <?php
+	   echo $task['taskName'];
+	   echo '   ';
+	   echo $task['taskDetails'];
+	   echo '     ';
+	   echo $task['taskID'];
+	   ?>
+      </h1></div>
+      <?php endforeach; ?>
+    </div>
+  </body>
+  
+</html>

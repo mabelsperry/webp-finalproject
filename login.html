@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  
+  <?php
+   
+   require("conn.php");
+
+   if (isset($_COOKIE['mycookie']))
+   {
+       header('Location: taskview.html');
+   } else {
+   ?>
+
+  <head>
+    <title>Welcome!!!</title>
+    <meta charset="utf-8">
+    <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+    <style>
+      label {
+	  float:left;
+	  width: 8em;
+	  text-align:right;
+	  color:navy;
+	  font-weight:bold;
+      }
+      .mov {
+	  width: 50%;
+	  margin-left:.25em;
+	  margin-bottom:.5em;
+      }
+      #submit {
+	  margin-left:3em;
+	  margin-top:.5em
+      }
+    </style>
+  </head>
+
+  <main>
+    <body>
+      <header style="border: 2px solid black;">
+	<h1>Welcome, new user!</h1>
+      </header>
+      <aside>
+	<form action="check.php" method="post" style="vertical-align: middle;">
+	  <label>Username</label>
+	  <input type="text" name="name" class="mov"><br>
+	  <label>Password</label>
+	  <input type="password" name="password" class="mov"><br>
+	  <label> Remember Me</label>
+	  <input type="checkbox" value="1" name="check">
+	  <input type="submit" value="Login" id="submit">
+	</form>
+      </aside>
+    </body>
+  </main>
+</html>
+
+<?php } ?>
