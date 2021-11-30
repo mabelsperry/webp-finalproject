@@ -8,13 +8,13 @@
 
 	$conn = $conn->query($query);
 	$arr = $conn->fetch_all();
-
+	// session_start();
+	
 	if (count($arr) > 0)
 	{
-		session_start();
 		$_SESSION['name'] = $name;
 		$_SESSION['password'] = $password;
-		header('Location: taskview.html');
+		header('Location: taskview.php');
 	}
 	else
 	{
