@@ -2,33 +2,31 @@
    
    require("conn.php");
 
-   print_r($_SESSION);
+   // print_r($_SESSION);
 
    $stm1 = $conn -> prepare(" SELECT userID FROM users WHERE username = ? ");
    $stm1 -> bind_param("s", $session_name);
    $session_name = $_SESSION["name"];
    
    $stm1 -> execute();
-   $result1 = $stm1 -> fetch();
-   $row = $result1 -> fetch_row();
-   
+   $result1 = $stm1 -> get_result();
+   $ID = $result1->fetch_assoc();
+   // print_r($ID['userID']);
 
    // Validate that userID is an int.
-   if (filter_var($int, FILTER_VALIDATE_INT) === 0 || !filter_var($ID, FILTER_VALIDATE_INT) === false) {
+   if (filter_var($ID['userID'], FILTER_VALIDATE_INT) === 0 ||
+       !filter_var($ID['userID'], FILTER_VALIDATE_INT) === false) {
      
      $stm2 = $conn ->
      	   prepare(" SELECT tasks.*, users.userID 
 	   FROM tasks LEFT JOIN users ON tasks.userID = users.userID 
 	   WHERE users.userID = ? ");
-     $stm2 -> bind_param("i", $ID);
-     $ID = $row["userID"];
-     
-     $result2 = $stm2 -> execute($stm2);
-     $tasks = $stm2 -> fetch_assoc();
-   }
+     $stm2 -> bind_param("i", $ID['userID']);
+          
+     $result2 = $stm2 -> execute();
+     $tasks = $stm2 -> get_result();
 
-   $stm1 -> closeCursor();
-   $stm2 -> closeCursor();
+   }
 
    ?>
 
@@ -39,6 +37,10 @@
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <div class="greetings-box">
+	<h1>Hello, <?php echo $session_name ?></h1>
+  </div>
   
   <body>
     <div class="sidebar">
@@ -47,18 +49,21 @@
     </div>
 
     <div class="content-area">
-    <h1>Hello, <?php echo $session_name ?></h1>
-      <?php foreach ($tasks as $task) : ?>
-      <div><h1>
+    
+    
+      <?php
+	if ($tasks->num_rows > 0) {
+	   while ($row = $tasks->fetch_assoc()) { ?>
+      <div><p>
 	  <?php
-	   echo $task['taskName'];
+	   echo $row['taskName'];
 	   echo '   ';
-	   echo $task['taskDetails'];
+	   echo $row['taskDetails'];
 	   echo '     ';
-	   echo $task['taskID'];
+	   echo $row['taskID'];
 	   ?>
-      </h1></div>
-      <?php endforeach; ?>
+      </p></div>
+      <?php } }?>
     </div>
   </body>
   
