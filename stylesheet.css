@@ -21,16 +21,19 @@
 }
 
 .sidebar > div {
-    width: 99%;
+    width: 100%;
+    border-radius: 10px;
     margin: 0 1px;
     border: 1px dashed black;
     padding: 10px;
     background-color: lightgrey;
     font-size: 20px;
+    
 }
 
 .sidebar > div:hover {
-    width: 99%;
+    width: 100%;
+    border-radius: 10px;
     margin: 0 1px;
     border: 1px dashed black;
     padding: 10px;
@@ -50,6 +53,7 @@
 
 .content-area > div {
     width: 99%;
+    border-radius: 10px;
     margin: 0 1px;
     border: 1px dashed black;
     padding: 10px;

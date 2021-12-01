@@ -35,6 +35,7 @@
   <head>
     <meta charset="utf-8">
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+    <title>List View</title>
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -49,19 +50,15 @@
     </div>
 
     <div class="content-area">
-    
-    
       <?php
 	if ($tasks->num_rows > 0) {
 	   while ($row = $tasks->fetch_assoc()) { ?>
       <div><p>
-	  <?php
-	   echo $row['taskName'];
-	   echo '   ';
-	   echo $row['taskDetails'];
-	   echo '     ';
-	   echo $row['taskID'];
-	   ?>
+	  <strong><?php echo $row['taskName']; ?>:  </strong>
+	  <?php echo $row['taskDetails']; ?>
+	  <i>
+	  <?php echo $row['taskID']; ?></i>
+	  
       </p></div>
       <?php } }?>
     </div>
