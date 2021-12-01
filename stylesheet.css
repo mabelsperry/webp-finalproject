@@ -44,7 +44,18 @@
     font-size: 20px;
 }
 
-.content-area {
+#cal-content-area {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    float: left;
+    width: 80%;
+    height: 800px;
+    background-color: grey;
+    border: 1px solid black;
+}
+
+#list-content-area {
     display: flex;
     flex-direction: column;
     float: left;
@@ -54,7 +65,15 @@
     border: 1px solid black;
 }
 
-.content-area > div {
+#cal-content-area > div {
+    width: 14%;
+    border: 1px dashed black;
+    padding: 10px;
+    background-color: lightgrey;
+    font-size: 20px;
+}
+
+#list-content-area > div {
     width: 100%;
     border-radius: 10px;
     border: 1px dashed black;

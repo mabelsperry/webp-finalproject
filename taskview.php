@@ -45,20 +45,19 @@
   
   <body>
     <div class="sidebar">
-      <div><p><strong>Task List</strong></p></div>
-      <div><p><strong>Calendar</strong></p></div>
+      <div><p><strong><a href="taskview.php">Task List</a></strong></p></div>
+      <div><p><strong><a href="calendarview.php">Calendar</a></strong></p></div>
       <a href="addtask.php" class="button button_addtask">+</a>
     </div>
 
-    <div class="content-area">
+    <div id="list-content-area">
       <?php
 	if ($tasks->num_rows > 0) {
 	   while ($row = $tasks->fetch_assoc()) { ?>
       <div><p>
 	  <strong><?php echo $row['taskName']; ?>:  </strong>
 	  <?php echo $row['taskDetails']; ?>
-	  <i>
-	  <?php echo $row['taskID']; ?></i>
+	  <i><?php echo $row['taskID']; ?></i>
 	  
       </p></div>
       <?php } }?>
