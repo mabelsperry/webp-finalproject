@@ -47,6 +47,7 @@
     <div class="sidebar">
       <div><p><strong>Task List</strong></p></div>
       <div><p><strong>Calendar</strong></p></div>
+      <a href="addtask.php" class="button button_addtask">+</a>
     </div>
 
     <div class="content-area">
