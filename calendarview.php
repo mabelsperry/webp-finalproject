@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+ 
+     require('conn.php');
+     require('cal.php');
+
+?>
+
   <head>
     <meta charset="utf-8">
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
@@ -9,12 +16,7 @@
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
-    <?php
- 
-     require('conn.php');
-     require('cal.php');
-
-     ?>
+    
 
       <div class="greetings-box">
 	<h1>Hello, <?php echo $session_name ?></h1>
@@ -28,6 +30,8 @@
     </div>
 
     <div id="cal-content-area">
+      <?php echo date("Y-M-d"); ?>
+      
       <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>  <div></div>
       <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>  <div></div>
       <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>  <div></div>
