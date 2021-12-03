@@ -6,6 +6,8 @@
      require('conn.php');
      require('cal.php');
 
+     
+
 ?>
 
   <head>
@@ -30,13 +32,173 @@
     </div>
 
     <div id="cal-content-area">
-      <?php echo date("Y-M-d"); ?>
+      <?php
+       $year = date("Y");
+       $month = date("M");
+       $day = date("d");
+       $df = 0;
+       $wc_query = $conn -> query(" SELECT Calendar.wc FROM Calendar
+                                    WHERE Calendar.year = '$year'
+                                    AND Calendar.month = '$month'
+                                    AND Calendar.day = '$day' ");
+
+       $row = $wc_query->fetch_assoc();
+       $wc = $row['wc'];
+       $wc_end = $wc + 6;
+       $month_query = $conn -> query(" SELECT Calendar.wc, Calendar.year, Calendar.month, Calendar.day, Calendar.dow
+                        FROM Calendar 
+                        WHERE Calendar.wc >= $wc AND Calendar.wc <= $wc_end");
       
-      <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>  <div></div>
-      <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>  <div></div>
-      <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>  <div></div>
-      <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>  <div></div>
-      <div></div> <div></div> <div></div> <div></div> <div></div> <div></div>  <div></div> 
+       
+       function printDay($q) {
+      	     $row = $q->fetch_assoc();
+	     echo " $row[day] ";
+       }
+       
+             
+       ?>
+
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
+      <div>
+	<?php printDay($month_query); ?>
+      </div>
+      
     </div>
     
   </body>
