@@ -43,12 +43,23 @@
 	<script>
 	  function checkVal(inpObj, msg) {
 	      console.log(inpObj.innerHTML);
-		if (!inpObj.checkValidity()) {
-		    msg.innerHTML = "Input invalid :(";
-		} else {
-		    msg.innerHTML = "Input valid :)";
-		} 
-	    } 
+	      if (!inpObj.checkValidity()) {
+		  msg.innerHTML = "Input invalid :(";
+	      } else {
+		  msg.innerHTML = "Input valid :)";
+	      } 
+	  }
+
+
+	  function validateMinDate(inputStart, inputStop, input_msg) {
+	      if (inputStop.value < inputStart.value) {
+		  input_msg.innerHTML = "Cannot be before start date/time.";
+		  inputStop.value = inputStart.value;
+	      } else {
+		  input_msg.innerHTML = "";
+	      }
+	  }
+
 	  </script>
 	<div>
 	  
@@ -63,10 +74,13 @@
 	  <label>Date Stop</label>:
 	  <input id="dateStop_input" type="date" name="dateStop" class="mov"
 		 onchange="validateMinDate()">
+	  <span id="dateStop_input_msg"></span>
 	  <script>
-	    function validateMinDate() {
-		
-	    }
+	    document.getElementById("dateStop_input").addEventListener("change", function() {
+		validateMinDate(document.getElementById("dateStart_input"),
+				document.getElementById("dateStop_input"),
+				document.getElementById("dateStop_input_msg"));
+	    });
 	  </script>
 	</div>
 	<div>
@@ -75,7 +89,16 @@
 	</div>
 	<div>
 	  <label>Time Stop</label>:
-	  <input id="timeStop_input" type="time" name="timeStop" class="mov">
+	  <input id="timeStop_input" type="time" name="timeStop" class="mov"
+		 onchange="validateMinTime()">
+	  <span id="timeStop_input_msg"></span>
+	  <script>
+	    document.getElementById("timeStop_input").addEventListener("change", function() {
+		validateMinDate(document.getElementById("timeStart_input"),
+				document.getElementById("timeStop_input"),
+				document.getElementById("timeStop_input_msg"));
+	    });
+	  </script>
 	</div>
 	<div>
 	  <label>Details</label>:
