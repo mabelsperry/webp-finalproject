@@ -5,12 +5,40 @@ $ID = $_SESSION["ID"];
 
 $data = $_POST;
 $title = $data["title"];
-$date = $data["date"];
-$time = $data["time"];
+$dateStart = $data["dateStart"];
+$dateStop = $data["dateStop"];
+$timeStart = $data["timeStart"];
+$timeStop = $data["timeStop"];
 $details = $data["details"];
 
-$sql = "INSERT INTO `tasks` (`userID`, `taskName`, `taskDetails`, `dateStart`, `timeStart` )
-        VALUES ('$ID', '$title', '$details', NULL, NULL)";
+// Sanitize input
+
+// Date = yyyy-mm-dd
+
+if ($dateStart == "" || $dateStart == NULL) {
+   $dateStart = "1970-01-01";
+} else {
+  $check_date_format = date_parse_from_format("Y-m-d", $dateStart);
+  checkdate($check_date_format['month'], $check_date_format['day'], $check_date_format['year']);
+}
+
+if ($dateStop == "" || $dateStop == NULL) {
+   $dateStop = "1970-01-01";
+} else {
+  $check_date_format = date_parse_from_format("Y-m-d",$dateStop);
+  checkdate($check_date_format['month'], $check_date_format['day'], $check_date_format['year']);
+}
+
+if ($timeStart == "" || $timeStart == NULL) {
+   $timeStart = "00:00:00";
+}
+
+if ($timeStop == "" || $timeStop == NULL) {
+   $timeStop = "00:00:00";
+}
+
+$sql = "INSERT INTO `tasks` (`userID`, `taskName`, `taskDetails`, `dateStart`, `dateStop`, `timeStart`, `timeStop` )
+        VALUES ('$ID', '$title', '$details', '$dateStart', '$dateStop','$timeStart', '$timeStop')";
 
 $conn -> query($sql);
 

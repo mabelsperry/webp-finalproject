@@ -142,10 +142,3 @@ body {
     background-color: lavender;
 }
 
-input[type=text] {
-    width: 60%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-}

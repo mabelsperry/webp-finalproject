@@ -3,8 +3,12 @@
   <?php
    require("conn.php");
    ?>
+
+  
+  
   <head>
     <meta charset="utf-8">
+    <link href="normalize.css" rel="stylesheet" type="text/css"/>
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     <title>Add Task</title>
   </head>
@@ -27,22 +31,54 @@
 	      background-color: lightgrey;
 	      font-size: 20px;
 	  }
+
+	  input[type=text] {
+	      width: 40%;
+	      padding: 12px 20px;
+	      margin: 8px 0;
+	      border: none;
+	      border-radius: 4px;
+	  }
 	</style>
+	<script>
+	  function checkVal(inpObj, msg) {
+	      console.log(inpObj.innerHTML);
+		if (!inpObj.checkValidity()) {
+		    msg.innerHTML = "Input invalid :(";
+		} else {
+		    msg.innerHTML = "Input valid :)";
+		} 
+	    } 
+	  </script>
 	<div>
 	  
-	  <label>Title</label>
+	  <label>Title</label>:
 	  <input type="text" name="title" class="mov" required><br>
 	</div>
 	<div>
-	  <label>Date</label>
-	  <input type="text" name="date" class="mov" pattern=""><br>
+	  <label>Date Start</label>:
+	  <input id="dateStart_input" type="date" name="dateStart" class="mov">
 	</div>
 	<div>
-	  <label>Time</label>
-	  <input type="text" name="time" class="mov"><br>
+	  <label>Date Stop</label>:
+	  <input id="dateStop_input" type="date" name="dateStop" class="mov"
+		 onchange="validateMinDate()">
+	  <script>
+	    function validateMinDate() {
+		
+	    }
+	  </script>
 	</div>
 	<div>
-	  <label>Details</label>
+	  <label>Time Start</label>:
+	  <input id="timeStart_input" type="time" name="timeStart" class="mov">
+	</div>
+	<div>
+	  <label>Time Stop</label>:
+	  <input id="timeStop_input" type="time" name="timeStop" class="mov">
+	</div>
+	<div>
+	  <label>Details</label>:
 	  <input type="text" name="details" class="mov"><br>
 	</div>
 	<input type="submit" value="Add Task!" id="submit">
