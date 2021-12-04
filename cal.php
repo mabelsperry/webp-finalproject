@@ -18,7 +18,7 @@ if ($result = $conn->query("SHOW TABLES LIKE 'Calendar' ")) {
                $month = date("M", $ts);
                $day = date("d", $ts);
 
-	       if ($dow == "Monday")
+	       if ($dow == "Sunday")
 	       	  $week_counter++;
 
 	       $insert -> execute();
@@ -26,6 +26,43 @@ if ($result = $conn->query("SHOW TABLES LIKE 'Calendar' ")) {
 	}
 
    }
+}
+
+date_default_timezone_set("America/New_York");
+	
+$year = date("Y");
+$month = date("M");
+$day = date("d");
+$df = 0;
+$wc_query = $conn -> query(" SELECT Calendar.wc FROM Calendar
+            WHERE Calendar.year = '$year'
+            AND Calendar.month = '$month'
+            AND Calendar.day = '$day' ");
+
+$row = $wc_query->fetch_assoc();
+$wc = $row['wc'];
+$wc_end = $wc + 6;
+$month_query = $conn -> query(" SELECT Calendar.wc, Calendar.year, Calendar.month, Calendar.day, Calendar.dow
+	       	     	        FROM Calendar 
+				WHERE Calendar.wc >= $wc AND Calendar.wc <= $wc_end");
+      
+// Callback function for array filter in printDay.
+function isToday($row) {
+	 $date1 = date_create($row['dateStart']);
+	 $date2 = date_create(date("Y-m-d"));
+	 $diff = date_diff($date1, $date2);
+	 echo $diff->format("%R%a days");
+}
+
+function printDay($q, $t) {
+	 $row = $q->fetch_assoc();
+         echo " $row[day] ";
+
+	 $todayTasks = array_filter($t, "isToday");
+	 foreach ($todayTasks as $row) {
+	 	 echo "<div> $row[title] </div>";
+	 }
+      	 
 }
 
 

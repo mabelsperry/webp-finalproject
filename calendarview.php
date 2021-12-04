@@ -1,198 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
- 
-     require('conn.php');
-     require('cal.php');
-
-?>
+  <?php require('cal.php');  ?>
 
   <head>
     <meta charset="utf-8">
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     <title>Calendar View</title>
-    
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
+
+    <script type="text/javascript">
+      function assign(link) {
+         window.location.assign(link);
+        }
+    </script>
+    
     <!-- <div class="greetings-box"> -->
-    <!-- 	<h1>Hello, <?php echo $session_name ?></h1> -->
-    <!-- </div> -->
+      <!-- 	<h1>Hello, <?php echo $session_name ?></h1> -->
+      <!-- </div> -->
 
     
     <div class="sidebar">
-      <div><p><strong><a href="taskview.php">Task List</a></strong></p></div>
-      <div><p><strong><a href="calendarview.php">Calendar</a></strong></p></div>
+      <div id="task_list_div"><p><strong>Task List</strong></p></div>
+      <div id="cal_div"><p><strong>Calendar</strong></p></div>
       <a href="addtask.php" class="button button_addtask">+</a>
+
+      <script type="text/javascript">
+	document.getElementById("task_list_div").addEventListener("click", function() {assign("taskview.php");});
+	document.getElementById("cal_div").addEventListener("click", function() {assign("calendarview.php");});
+      </script>
     </div>
 
     <div id="cal-content-area">
-      <?php
-       $year = date("Y");
-       $month = date("M");
-       $day = date("d");
-       $df = 0;
-       $wc_query = $conn -> query(" SELECT Calendar.wc FROM Calendar
-                                    WHERE Calendar.year = '$year'
-                                    AND Calendar.month = '$month'
-                                    AND Calendar.day = '$day' ");
-
-       $row = $wc_query->fetch_assoc();
-       $wc = $row['wc'];
-       $wc_end = $wc + 6;
-       $month_query = $conn -> query(" SELECT Calendar.wc, Calendar.year, Calendar.month, Calendar.day, Calendar.dow
-                        FROM Calendar 
-                        WHERE Calendar.wc >= $wc AND Calendar.wc <= $wc_end");
-      
-       
-       function printDay($q) {
-      	     $row = $q->fetch_assoc();
-	     echo " $row[day] ";
-       }
-       
-             
-       ?>
-
-      
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
 
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
       <div>
-	<?php printDay($month_query); ?>
+	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>
       
     </div>
