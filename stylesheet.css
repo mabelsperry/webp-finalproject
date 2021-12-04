@@ -17,27 +17,28 @@
     display: flex;
     flex-direction: column;
     float: left;
-    width: 20%;
-    height: 800px;
+    width: 12%;
+    height: 1000px;
     background-color: grey;
     border: 1px solid black;
+    border-radius: 10px;
 }
 
 .sidebar > div {
     width: 100%;
     border-radius: 10px;
-    margin: 0 1px;
     border: 1px dashed black;
     padding: 10px;
     background-color: lightgrey;
-    font-size: 20px;
+
+    text-align: center;
+    font-size: 15px;
     
 }
 
 .sidebar > div:hover {
     width: 100%;
     border-radius: 10px;
-    margin: 0 1px;
     border: 1px dashed black;
     padding: 10px;
     background-color: lightblue;
@@ -45,38 +46,74 @@
 }
 
 #cal-content-area {
+
+    /* Display */
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+
+    /* Placement */
     float: left;
-    width: 80%;
-    height: 800px;
+
+    /* Appearance */
+    width: 88%;
+    height: 1000px;
     background-color: grey;
     border: 1px solid black;
+    border-radius: 10px;
+}
+
+#cal-content-area > div {
+    width: 14.2857%;
+    border: 1px dashed black;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: lightgrey;
+    font-size: 20px;
+}
+
+#cal-content-area > div:hover {
+    width: 14.2857%;
+    border: 1px dashed black;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: lightblue;
+    font-size: 20px;
 }
 
 #list-content-area {
     display: flex;
     flex-direction: column;
     float: left;
-    width: 80%;
-    height: 800px;
+    width: 88%;
+    height: 1000px;
     background-color: grey;
     border: 1px solid black;
-}
-
-#cal-content-area > div {
-    width: 14%;
-    border: 1px dashed black;
-    padding: 10px;
-    background-color: lightgrey;
-    font-size: 20px;
 }
 
 #list-content-area > div {
     width: 100%;
     border-radius: 10px;
     border: 1px dashed black;
+    padding: 10px;
+    background-color: lightgrey;
+    font-size: 20px;
+}
+
+#addtask-content-area {
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 88%;
+    height: 1000px;
+    background-color: grey;
+    border: 1px solid black;
+}
+
+#addtask-content-area > div {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid black;
     padding: 10px;
     background-color: lightgrey;
     font-size: 20px;
@@ -105,11 +142,10 @@ body {
     background-color: lavender;
 }
 
-aside {
-    vertical-align: middle;
-    background-color: lightgrey;
-    float: left;
-    width: 45%;
-    padding: 175px 10px;
-    text-align: center;
+input[type=text] {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
 }

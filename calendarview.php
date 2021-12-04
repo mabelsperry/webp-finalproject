@@ -6,8 +6,6 @@
      require('conn.php');
      require('cal.php');
 
-     
-
 ?>
 
   <head>
@@ -18,11 +16,9 @@
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
-    
-
-      <div class="greetings-box">
-	<h1>Hello, <?php echo $session_name ?></h1>
-      </div>
+    <!-- <div class="greetings-box"> -->
+    <!-- 	<h1>Hello, <?php echo $session_name ?></h1> -->
+    <!-- </div> -->
 
     
     <div class="sidebar">
