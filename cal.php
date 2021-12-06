@@ -37,8 +37,7 @@ $day = date("d");
 $df = 0;
 $wc_query = $conn -> query(" SELECT Calendar.wc FROM Calendar
             WHERE Calendar.year = '$year'
-            AND Calendar.month = '$month'
-            AND Calendar.day = '$day' ");
+            AND Calendar.month = '$month'");
 
 $row = $wc_query->fetch_assoc();
 $wc = $row['wc'];

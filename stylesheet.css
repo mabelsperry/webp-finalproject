@@ -40,6 +40,19 @@
     cursor: pointer;
 }
 
+#cal-control {
+    /* Display */
+    width: 80%;
+    height: 100px;
+
+    /* Placement */
+    float: right;
+
+    /* Appearance */
+    background-color: lightpink;
+    border: 2px solid black;
+}
+
 #cal-content-area {
 
     /* Display */
@@ -121,13 +134,12 @@
     font-size: 20px;
 }
 
-.button_addtask {
+button {
     /* Placement */
     padding: 20px;
     margin: 4px 2px;
 
     /* Appearance */
-    background-color: pink;
     border: 1px solid black;
     color: white;
     width: 70px;
@@ -139,22 +151,13 @@
     cursor: pointer;
 }
 
-#button_logout {
-    /* Placement */
-    padding: 20px;
-    margin: 4px 2px;
-
+#button_addtask {
     /* Appearance */
+    background-color: pink;
+}
+
+#button_logout {
     background-color: darkred;
-    border: 1px solid black;
-    color: white;
-    width: 70px;
-    border-radius: 60%;
-    text-align: center;
-    font-size: 16px;
-    
-    display: inline-block;
-    cursor: pointer;
 }
 
 body {
