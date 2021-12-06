@@ -34,7 +34,10 @@
 
       <script type="text/javascript">
 	document.getElementById("task_list_div").addEventListener("click", function() {assign("taskview.php");});
-	document.getElementById("cal_div").addEventListener("click", function() {assign("calendarview.php");});
+	document.getElementById("cal_div").addEventListener("click", function() {
+	    let d = new Date(Date.now());
+	    assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
+	});
 	document.getElementById("button_addtask").addEventListener("click", function() {assign("addtask.php");});
 	document.getElementById("button_logout").addEventListener("click", function() {assign("logout.php");});
       </script>

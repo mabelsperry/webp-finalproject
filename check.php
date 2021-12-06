@@ -13,6 +13,10 @@
 	{
 		$_SESSION['name'] = $name;
 		$_SESSION['password'] = $password;
+
+		// Setting global variable to decide what month to display.
+		$date_offset = 0;
+
 		header('Location: taskview.php');
 	}
 	else

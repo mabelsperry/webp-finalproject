@@ -13,19 +13,17 @@ $details = $data["details"];
 
 // Sanitize input
 
-// Date = yyyy-mm-dd
-
 if ($dateStart == "" || $dateStart == NULL) {
-   $dateStart = "1970-01-01";
+   $dateStart = "1970-01-1";
 } else {
-  $check_date_format = date_parse_from_format("Y-m-d", $dateStart);
+  $check_date_format = date_parse_from_format("Y-n-j", $dateStart);
   checkdate($check_date_format['month'], $check_date_format['day'], $check_date_format['year']);
 }
 
 if ($dateStop == "" || $dateStop == NULL) {
-   $dateStop = "1970-01-01";
+   $dateStop = "1970-01-1";
 } else {
-  $check_date_format = date_parse_from_format("Y-m-d",$dateStop);
+  $check_date_format = date_parse_from_format("Y-n-j",$dateStop);
   checkdate($check_date_format['month'], $check_date_format['day'], $check_date_format['year']);
 }
 

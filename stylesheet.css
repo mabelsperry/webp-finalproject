@@ -43,7 +43,7 @@
 #cal-control {
     /* Display */
     width: 80%;
-    height: 100px;
+    height: 200px;
 
     /* Placement */
     float: right;
@@ -158,6 +158,10 @@ button {
 
 #button_logout {
     background-color: darkred;
+}
+
+.cal_control_button {
+    background-color: navy;
 }
 
 body {

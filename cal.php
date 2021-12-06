@@ -16,8 +16,8 @@ if ($result = $conn->query("SHOW TABLES LIKE 'Calendar' ")) {
 	       $ts = mktime(0, 0, 0, 1, $x, 2021);
                $dow = date("l", $ts);
                $year = date("Y", $ts);
-               $month = date("M", $ts);
-               $day = date("d", $ts);
+               $month = date("n", $ts);
+               $day = date("j", $ts);
 
 	       if ($dow == "Sunday")
 	       	  $week_counter++;
@@ -30,35 +30,44 @@ if ($result = $conn->query("SHOW TABLES LIKE 'Calendar' ")) {
 }
 
 
-	
-$year = date("Y");
-$month = date("M");
-$day = date("d");
-$df = 0;
-$wc_query = $conn -> query(" SELECT Calendar.wc FROM Calendar
-            WHERE Calendar.year = '$year'
-            AND Calendar.month = '$month'");
 
+
+$date = date_create($GLOBALS['viewdate']);
+
+// Get today's date, truncated
+$year = date_format($date, "Y");
+$month = date_format($date, "n");
+$day = date_format($date, "j");
+
+// "Week count query" = finds all weeks associated with a month's display (last days of last month, first of next)
+$wc_query = $conn -> query(" SELECT Calendar.wc FROM Calendar
+	    	     	     WHERE Calendar.year = '$year'
+			     AND Calendar.month = '$month'");
+
+// Section off the six weeks that will be displayed
 $row = $wc_query->fetch_assoc();
 $wc = $row['wc'];
-$wc_end = $wc + 6;
+$wc_end = $wc + 5;
+
+// Query returns every day of the month we are displaying
 $month_query = $conn -> query(" SELECT Calendar.wc, Calendar.year, Calendar.month, Calendar.day, Calendar.dow
-	       	     	        FROM Calendar 
+	       	     		FROM Calendar 
 				WHERE Calendar.wc >= $wc AND Calendar.wc <= $wc_end");
 
-function printDay($q, $t) {
-	 $row = $q->fetch_assoc();
+
+function printDayTasks($row, $t) {
+	 // $row = $row->fetch_assoc();
          echo " $row[day] ";
 
 	 $todayTasks = array();
 	 foreach ($t as $tsk) {
 	 	 $date1 = date_create($tsk['dateStart']);
-		 $date2 = date_create_from_format("j-M-Y", $row['day'] . "-" . $row['month'] . "-" . $row['year']);
+		 $date2 = date_create($row['year'] . "-" . $row['month'] . "-" . $row['day']);
 		 
-		 $date1_Str = date_format($date1,"Y-M-d");
-		 $date2_Str = date_format($date2,"Y-M-d");
+		 $date1_Str = date_format($date1,"Y-n-j");
+		 $date2_Str = date_format($date2,"Y-n-j");
 		 		 
-		 if (strncasecmp($date1_Str, $date2_Str,11) == 0) {
+		 if (strncasecmp($date1_Str, $date2_Str,10) == 0) {
 		    array_push($todayTasks, $tsk);
 		    
 		 }
@@ -71,4 +80,18 @@ function printDay($q, $t) {
       	 
 }
 
+
+function printDay($q, $t) {
+	 while ($f = $q->fetch_assoc()) {
+	       if ($f['month'] != date_format(date_create($_GET['viewdate']), "n")) {
+               	  echo '<div style="background-color: darkgrey;">';
+		  printDayTasks($f, $t);
+	    	  echo '</div>';
+               } else {
+                  echo '<div style="background-color: grey;">';
+	          printDayTasks($f, $t);
+	          echo '</div>';
+               }
+         }
+}
 ?>

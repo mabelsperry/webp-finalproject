@@ -55,7 +55,7 @@
 	</style>
 	<script>
 	  function checkVal(inpObj, msg) {
-	      console.log(inpObj.innerHTML);
+	      // console.log(inpObj.innerHTML);
 	      if (!inpObj.checkValidity()) {
 		  msg.innerHTML = "Input invalid :(";
 	      } else {
