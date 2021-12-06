@@ -1,6 +1,7 @@
 <?php
 
 require("acquireid.php");
+date_default_timezone_set("America/New_York");
 
 if ($result = $conn->query("SHOW TABLES LIKE 'Calendar' ")) {
      if ($result->num_rows == 0) {
@@ -28,7 +29,7 @@ if ($result = $conn->query("SHOW TABLES LIKE 'Calendar' ")) {
    }
 }
 
-date_default_timezone_set("America/New_York");
+
 	
 $year = date("Y");
 $month = date("M");
@@ -48,23 +49,39 @@ $month_query = $conn -> query(" SELECT Calendar.wc, Calendar.year, Calendar.mont
       
 // Callback function for array filter in printDay.
 function isToday($row) {
-	 $date1 = date_create($row['dateStart']);
-	 $date2 = date_create(date("Y-m-d"));
-	 $diff = date_diff($date1, $date2);
-	 echo $diff->format("%R%a days");
+	 	 echo print_r($diff);
 }
 
 function printDay($q, $t) {
 	 $row = $q->fetch_assoc();
          echo " $row[day] ";
 
-	 $todayTasks = array_filter($t, "isToday");
+	 $todayTasks = array();
+	 foreach ($t as $tsk) {
+	 	 $date1 = date_create($tsk['dateStart']);
+		 $date2 = date_create_from_format("j-M-Y", $row['day'] . "-" . $row['month'] . "-" . $row['year']);
+	 	 // $diff = date_diff($date1, $date2);
+		 // print_r($diff);
+		 // if ($diff->d == 0 && $diff->m == 0 && $diff->y == 0) {
+		 //    array_push($todayTasks, $tsk);
+		    
+		 // }
+
+		 $date1_Str = date_format($date1,"Y-M-d");
+		 $date2_Str = date_format($date2,"Y-M-d");
+		 echo ($date1_Str === $date2_Str);
+		 
+		 if (strncasecmp($date_Str1, $date_Str1,6) == 0) {
+		    array_push($todayTasks, $tsk);
+		    
+		 }
+	 	 
+	 }
+	 
 	 foreach ($todayTasks as $row) {
-	 	 echo "<div> $row[title] </div>";
+	 	 echo "<div> $row[taskName] </div>";
 	 }
       	 
 }
-
-
 
 ?>

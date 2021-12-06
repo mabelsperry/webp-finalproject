@@ -33,6 +33,10 @@
       </script>
     </div>
 
+    <?php $tasks_as_assoc_array = $tasks->fetch_all(MYSQLI_ASSOC);
+    // print_r($tasks_as_assoc_array);
+    ?>
+    
     <div id="cal-content-area">
       <div>
 	<?php printDay($month_query, $tasks_as_assoc_array); ?>

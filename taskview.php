@@ -37,7 +37,7 @@
     <div id="list-content-area">
       <?php
        if ($tasks->num_rows > 0) {
-      while ($row = $tasks->fetch_assoc()) { ?>
+       while ($row = $tasks->fetch_assoc()) { ?>
       <div><p>
 	  <strong><?php echo $row['taskName']; ?>:  </strong>
 	  <?php echo $row['taskDetails']; ?>

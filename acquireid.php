@@ -24,7 +24,5 @@ if (filter_var($ID['userID'], FILTER_VALIDATE_INT) === 0 ||
    $result2 = $stm2 -> execute();
    $tasks = $stm2 -> get_result();
 
-   $tasks_as_assoc_array = $tasks->fetch_all(MYSQLI_ASSOC);
-   //   print_r($tasks_as_assoc_array);
 }
 ?>
