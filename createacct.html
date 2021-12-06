@@ -1,16 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
   
-  <?php
-   
-   require("conn.php");
-
-   if (isset($_COOKIE['mycookie']))
-   {
-       header('Location: taskview.php');
-   } else {
-   ?>
+  <?php require("conn.php");  ?>
 
   <head>
     <title>Welcome!!!</title>
@@ -25,7 +16,7 @@
 	  font-weight:bold;
       }
       .mov {
-	  width: 50%;
+	  width: 20%;
 	  margin-left:.25em;
 	  margin-bottom:.5em;
       }
@@ -39,20 +30,21 @@
   <main>
     <body>
       <header style="border: 2px solid black;">
-	<h1>Welcome, user!</h1>
+	<h1>Welcome, new user!</h1>
       </header>
       <aside>
-	<form action="check.php" method="post" style="vertical-align: middle;">
+	<form action="createacct.php" method="post" style="vertical-align: middle;">
 	  <label>Username</label>
 	  <input type="text" name="name" class="mov" required><br>
+	  <label>Email</label>
+	  <input type="text" name="email" class="mov" required><br>
 	  <label>Password</label>
 	  <input type="password" name="password" class="mov" required><br>
 	  <label> Remember Me</label>
 	  <input type="checkbox" value="1" name="check">
-	  <input type="submit" value="Login" id="submit">
+	  <input type="submit" value="Submit" id="submit">
 	</form>
       </aside>
-      <a href="createacct.html">Create Account</a>
     </body>
   </main>
 </html>

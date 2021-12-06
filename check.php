@@ -5,11 +5,10 @@
 	$password = $_POST['password'];
 
 	$query = " SELECT * FROM users WHERE username='$name' AND password='$password' ";
-
-	$conn = $conn->query($query);
-	$arr = $conn->fetch_all();
-	// session_start();
+	$qres = $conn->query($query);
 	
+	$arr = $qres->fetch_all();
+		
 	if (count($arr) > 0)
 	{
 		$_SESSION['name'] = $name;
@@ -22,16 +21,3 @@
 	}
 	
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-

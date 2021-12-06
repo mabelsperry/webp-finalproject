@@ -17,8 +17,8 @@
 
     <script type="text/javascript">
       function assign(link) {
-         window.location.assign(link);
-        }
+          window.location.assign(link);
+      }
     </script>
     
     <div class="sidebar">
@@ -73,7 +73,7 @@
 	      }
 	  }
 
-	  </script>
+	</script>
 	<div>
 	  
 	  <label>Title</label>:
@@ -85,8 +85,7 @@
 	</div>
 	<div>
 	  <label>Date Stop</label>:
-	  <input id="dateStop_input" type="date" name="dateStop" class="mov"
-		 onchange="validateMinDate()">
+	  <input id="dateStop_input" type="date" name="dateStop" class="mov">
 	  <span id="dateStop_input_msg"></span>
 	  <script>
 	    document.getElementById("dateStop_input").addEventListener("change", function() {
@@ -102,8 +101,7 @@
 	</div>
 	<div>
 	  <label>Time Stop</label>:
-	  <input id="timeStop_input" type="time" name="timeStop" class="mov"
-		 onchange="validateMinTime()">
+	  <input id="timeStop_input" type="time" name="timeStop" class="mov">
 	  <span id="timeStop_input_msg"></span>
 	  <script>
 	    document.getElementById("timeStop_input").addEventListener("change", function() {

@@ -46,11 +46,6 @@ $wc_end = $wc + 6;
 $month_query = $conn -> query(" SELECT Calendar.wc, Calendar.year, Calendar.month, Calendar.day, Calendar.dow
 	       	     	        FROM Calendar 
 				WHERE Calendar.wc >= $wc AND Calendar.wc <= $wc_end");
-      
-// Callback function for array filter in printDay.
-function isToday($row) {
-	 	 echo print_r($diff);
-}
 
 function printDay($q, $t) {
 	 $row = $q->fetch_assoc();
@@ -60,13 +55,7 @@ function printDay($q, $t) {
 	 foreach ($t as $tsk) {
 	 	 $date1 = date_create($tsk['dateStart']);
 		 $date2 = date_create_from_format("j-M-Y", $row['day'] . "-" . $row['month'] . "-" . $row['year']);
-	 	 // $diff = date_diff($date1, $date2);
-		 // print_r($diff);
-		 // if ($diff->d == 0 && $diff->m == 0 && $diff->y == 0) {
-		 //    array_push($todayTasks, $tsk);
-		    
-		 // }
-
+		 
 		 $date1_Str = date_format($date1,"Y-M-d");
 		 $date2_Str = date_format($date2,"Y-M-d");
 		 		 

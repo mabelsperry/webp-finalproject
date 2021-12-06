@@ -33,11 +33,13 @@
       </script>
     </div>
 
-    <?php $tasks_as_assoc_array = $tasks->fetch_all(MYSQLI_ASSOC);
-    // print_r($tasks_as_assoc_array);
-    ?>
+    <?php $tasks_as_assoc_array = $tasks->fetch_all(MYSQLI_ASSOC);  ?>
     
     <div id="cal-content-area">
+
+      <!-- printDay method is located in cal.php. There's a foreach method that echos the HTML code
+	that handles how the individual tasks should look.-->
+      
       <div>
 	<?php printDay($month_query, $tasks_as_assoc_array); ?>
       </div>

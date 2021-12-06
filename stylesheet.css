@@ -5,7 +5,8 @@
 
 .greetings-box {
     border-radius: 5px;
-    width: 100%;
+    width: 88%;
+    float: right;
     text-align: center;
     padding: 4px;
     background-color: darkgrey;
@@ -14,32 +15,28 @@
 }
 
 .sidebar {
+    position: fixed;
     display: flex;
     flex-direction: column;
     float: left;
     width: 12%;
-    height: 1000px;
-    background-color: grey;
-    border: 1px solid black;
-    border-radius: 10px;
 }
 
 .sidebar > div {
+    /* Display */
     width: 100%;
-    border-radius: 10px;
-    border: 1px dashed black;
-    padding: 10px;
-    background-color: lightgrey;
     text-align: center;
     font-size: 15px;
-    height: 70px;
+    height: 50px;
+
+    /* Appearance */
+    border: 1px solid black;    
     
 }
 
 .sidebar > div:hover {
     background-color: lightblue;
-    padding: 21.43px;
-    height: 100px;
+    height: 60px;
     cursor: pointer;
 }
 
@@ -51,14 +48,13 @@
     flex-direction: row;
 
     /* Placement */
-    float: left;
+    float: right;
 
     /* Appearance */
     width: 88%;
     height: 1000px;
     background-color: grey;
     border: 1px solid black;
-    border-radius: 10px;
 }
 
 #cal-content-area > div {
@@ -66,7 +62,7 @@
     border: 1px dashed black;
     border-radius: 5px;
     padding: 10px;
-    background-color: grey;
+    background-color: lightgrey;
     font-size: 20px;
 }
 
@@ -91,11 +87,10 @@
 #list-content-area {
     display: flex;
     flex-direction: column;
-    float: left;
+    float: right;
     width: 88%;
-    height: 1000px;
     background-color: grey;
-    border: 1px solid black;
+    border: 1px solid black;    
 }
 
 #list-content-area > div {
@@ -128,12 +123,29 @@
 
 .button_addtask {
     /* Placement */
-    position: relative;
     padding: 20px;
     margin: 4px 2px;
 
     /* Appearance */
     background-color: pink;
+    border: 1px solid black;
+    color: white;
+    width: 70px;
+    border-radius: 60%;
+    text-align: center;
+    font-size: 16px;
+    
+    display: inline-block;
+    cursor: pointer;
+}
+
+#button_logout {
+    /* Placement */
+    padding: 20px;
+    margin: 4px 2px;
+
+    /* Appearance */
+    background-color: darkred;
     border: 1px solid black;
     color: white;
     width: 70px;
