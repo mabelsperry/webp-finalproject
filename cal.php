@@ -69,9 +69,8 @@ function printDay($q, $t) {
 
 		 $date1_Str = date_format($date1,"Y-M-d");
 		 $date2_Str = date_format($date2,"Y-M-d");
-		 echo ($date1_Str === $date2_Str);
-		 
-		 if (strncasecmp($date_Str1, $date_Str1,6) == 0) {
+		 		 
+		 if (strncasecmp($date1_Str, $date2_Str,11) == 0) {
 		    array_push($todayTasks, $tsk);
 		    
 		 }
