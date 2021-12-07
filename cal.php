@@ -69,7 +69,6 @@ function printDayTasks($row, $t) {
 		 		 
 		 if (strncasecmp($date1_Str, $date2_Str,10) == 0) {
 		    array_push($todayTasks, $tsk);
-		    
 		 }
 	 	 
 	 }

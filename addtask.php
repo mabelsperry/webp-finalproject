@@ -10,6 +10,8 @@
     <meta charset="utf-8">
     <link href="normalize.css" rel="stylesheet" type="text/css"/>
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+    <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
+    <script src="jquery-3.6.0.js"></script>
     <title>Add Task</title>
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,11 +26,17 @@
     <div class="sidebar">
       <div id="task_list_div"><p><strong>Task List</strong></p></div>
       <div id="cal_div"><p><strong>Calendar</strong></p></div>
-      <a href="addtask.php" class="button button_addtask">+</a>
-
+      <button id="button_addtask">+</button>
+      <button id="button_logout">L</button>
+     
       <script type="text/javascript">
-	document.getElementById("task_list_div").addEventListener("click", function() {assign("taskview.php");});
-	document.getElementById("cal_div").addEventListener("click", function() {assign("calendarview.php");});
+	$("#task_list_div").click(function() {assign("taskview.php");});
+	$("#cal_div").click(function() {
+	    let d = new Date(Date.now());
+	    assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
+	});
+	$("#button_addtask").click(function() {assign("addtask.php");});
+	$("#button_logout").click(function() {assign("logout.php");});
       </script>
     </div>
     

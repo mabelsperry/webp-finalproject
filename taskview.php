@@ -8,6 +8,7 @@
   
   <head>
     <meta charset="utf-8">
+    <link href="normalize.css" rel="stylesheet" type="text/css"/>
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     <title>List View</title>
   </head>

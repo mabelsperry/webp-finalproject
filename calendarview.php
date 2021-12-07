@@ -8,6 +8,7 @@
 
   <head>
     <meta charset="utf-8">
+    <link href="normalize.css" rel="stylesheet" type="text/css"/>
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
     <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
     <script src="jquery-3.6.0.js"></script>

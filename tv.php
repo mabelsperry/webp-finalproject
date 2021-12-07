@@ -1,11 +1,14 @@
 <?php
 
 function printTask($t) {
-	echo "<div><p><strong>" . $t['taskName'] . ": </strong>" . $t['taskDetails'] . "<br>";
+	echo "<div><p><strong>" . $t['taskName'];
+	if ($t['taskDetails']) {
+	   echo "<strong>: </strong>" . $t['taskDetails'] . "<br>";
+	}
 	if ( strncasecmp($t['dateStart'], "1970-01-01",11) != 0 ) {
 	   echo "<b>Start Date: </b>" . $t['dateStart'] . "<br>";
 	}
-	if ( $t['dateStop'] ) {
+	if ( strncasecmp($t['dateStop'], "1970-01-01",11) != 0 ) {
 	   echo "<b>End Date: </b>" . $t['dateStop'] . "<br>";
 	}
 
@@ -15,7 +18,7 @@ function printTask($t) {
 	if ( strncasecmp($t['timeStop'], "00:00:00", 11 ) != 0) {
 	   echo "<b>End Time: </b>" . $t['timeStop'] . "<br>";
 	}
-	echo "<i>" . $t['taskID'] . "</i></p></div>";
+	echo "<br><i>" . $t['taskID'] . "</i></p></div>";
 	
 }
 
