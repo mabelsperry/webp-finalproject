@@ -47,6 +47,37 @@
     cursor: pointer;
 }
 
+.AddTasksidebar {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+    left: 80px;
+    top:275px;
+    width: 12%;
+    border-width: 0px;
+    background-color: rgba(0, 0, 0, 0);}
+
+.AddTasksidebar > div {
+    /* Display */
+    margin-bottom: 200px;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    height: 50px;
+
+    /* Appearance */
+    border: 1px solid black;
+
+}
+
+.AddTasksidebar > div:hover {
+    background-color: lightblue;
+    cursor: pointer;
+}
+
 #cal-control {
     /* Display */
     width: 88%;

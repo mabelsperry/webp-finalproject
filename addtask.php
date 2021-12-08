@@ -20,7 +20,7 @@
       }
     </script>
 
-    <div class="sidebar">
+    <div class="AddTasksidebar">
       <a href="taskview.php" class="myButton">Task List</a>
       <a href="calendarview.php" class="myButton">Calender</a>
       <a href="addtask.php" class="myButton">Add Task</a>
