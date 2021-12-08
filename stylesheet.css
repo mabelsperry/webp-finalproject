@@ -36,7 +36,6 @@
 
 .sidebar > div:hover {
     background-color: lightblue;
-    height: 60px;
     cursor: pointer;
 }
 
@@ -54,7 +53,6 @@
 }
 
 #cal-content-area {
-
     /* Display */
     display: flex;
     flex-wrap: wrap;
@@ -106,12 +104,47 @@
     border: 1px solid black;    
 }
 
-#list-content-area > div {
+.list-content-div {
     width: 100%;
+    float: left;
     border: 1px dashed black;
     padding: 10px;
     background-color: lightgrey;
     font-size: 20px;
+}
+
+.list-content-div:hover {
+    background-color: lightblue;
+}
+
+.delete_task {
+    border-radius: 10px;
+    width: 100px;
+    float: right;
+    text-align: center;
+    border: 1px dashed black;
+    padding: 10px;
+    background-color: salmon;
+}
+
+.delete_task:hover {
+    background-color: crimson;
+    cursor: pointer;
+}
+
+.modify_task {
+    border-radius: 10px;
+    width: 100px;
+    float: right;
+    text-align: center;
+    border: 1px dashed black;
+    padding: 10px;
+    background-color: cornflowerblue;
+}
+
+.modify_task:hover {
+    background-color: blueviolet;
+    cursor: pointer;
 }
 
 #addtask-content-area {
@@ -151,17 +184,18 @@ button {
 }
 
 #button_addtask {
-    /* Appearance */
-    background-color: pink;
+    background-color: plum;
 }
 
 #button_logout {
-    background-color: darkred;
+    background-color: tomato;
 }
 
 .cal_control_button {
     background-color: navy;
 }
+
+
 
 body {
     background-color: lavender;

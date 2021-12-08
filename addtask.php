@@ -3,9 +3,6 @@
   <?php
    require("conn.php");
    ?>
-
-  
-  
   <head>
     <meta charset="utf-8">
     <link href="normalize.css" rel="stylesheet" type="text/css"/>
@@ -41,8 +38,22 @@
     </div>
     
     <div id="list-content-area">
-      <h1>Add a Task!</h1>
-      <form action="insert_task.php" method="post">
+
+      <?php	 
+	 $taskID = filter_input(INPUT_GET, 'taskID',FILTER_VALIDATE_INT);
+	 if ($taskID !=  FALSE) {
+	   $task_stats = $conn->query("SELECT tasks.* FROM tasks WHERE taskID=${taskID}");
+	   $task_stats = $task_stats->fetch_assoc();	   
+	} else {
+	   $task_stats = array("taskName"=>"", "dateStart"=>"", "dateStop"=>"",
+	                       "timeStart"=>"", "timeStop"=>"", "taskDetails"=>"");
+	}
+	 ?>
+      
+      <h1><?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task</h1>
+      <form
+	action="<?php echo ($taskID !=  FALSE) ? "modify_task.php?taskID=${taskID}" : 'insert_task.php'; ?>"
+	method="post">
 	<style>
 	  div {
 	      width: 100%;
@@ -63,7 +74,6 @@
 	</style>
 	<script>
 	  function checkVal(inpObj, msg) {
-	      // console.log(inpObj.innerHTML);
 	      if (!inpObj.checkValidity()) {
 		  msg.innerHTML = "Input invalid :(";
 	      } else {
@@ -82,18 +92,22 @@
 	  }
 
 	</script>
+	
 	<div>
 	  
 	  <label>Title</label>:
-	  <input type="text" name="title" class="mov" required><br>
+	  <input type="text" name="title" class="mov"
+		 value="<?php echo $task_stats['taskName'] ?>" required><br>
 	</div>
 	<div>
 	  <label>Date Start</label>:
-	  <input id="dateStart_input" type="date" name="dateStart" class="mov">
+	  <input id="dateStart_input" type="date" name="dateStart" class="mov"
+		 value="<?php echo $task_stats['dateStart'] ?>">
 	</div>
 	<div>
 	  <label>Date Stop</label>:
-	  <input id="dateStop_input" type="date" name="dateStop" class="mov">
+	  <input id="dateStop_input" type="date" name="dateStop" class="mov"
+		 value="<?php echo $task_stats['dateStop'] ?>">
 	  <span id="dateStop_input_msg"></span>
 	  <script>
 	    document.getElementById("dateStop_input").addEventListener("change", function() {
@@ -105,11 +119,13 @@
 	</div>
 	<div>
 	  <label>Time Start</label>:
-	  <input id="timeStart_input" type="time" name="timeStart" class="mov">
+	  <input id="timeStart_input" type="time" name="timeStart" class="mov"
+		 value="<?php echo $task_stats['timeStart'] ?>">
 	</div>
 	<div>
 	  <label>Time Stop</label>:
-	  <input id="timeStop_input" type="time" name="timeStop" class="mov">
+	  <input id="timeStop_input" type="time" name="timeStop" class="mov"
+		 value="<?php echo $task_stats['taskStop'] ?>">
 	  <span id="timeStop_input_msg"></span>
 	  <script>
 	    document.getElementById("timeStop_input").addEventListener("change", function() {
@@ -121,9 +137,10 @@
 	</div>
 	<div>
 	  <label>Details</label>:
-	  <input type="text" name="details" class="mov"><br>
+	  <input type="text" name="details" class="mov"
+		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
 	</div>
-	<input type="submit" value="Add Task!" id="submit">
+	<input type="submit" value="<?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task!" id="submit">
       </form>
     </div>
     

@@ -13,9 +13,6 @@
     <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
     <script src="jquery-3.6.0.js"></script>
     <title>Calendar View</title>
-  </head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <body>
 
     <script type="text/javascript">
       function assign(link) {
@@ -23,10 +20,9 @@
         }
     </script>
     
-    <!-- <div class="greetings-box"> -->
-      <!-- 	<h1>Hello, <?php echo $session_name ?></h1> -->
-      <!-- </div> -->
-
+  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <body>
     
     <div class="sidebar">
       <div id="task_list_div"><p><strong>Task List</strong></p></div>
@@ -75,172 +71,6 @@
 	   that handles how the individual tasks should look.-->
 
       <?php printDay($month_query, $tasks_as_assoc_array); ?>
-      
-      
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
-      
-      <!-- <div> -->
-      <!-- 	<?php printDay($month_query, $tasks_as_assoc_array); ?> -->
-      <!-- </div> -->
       
     </div>
     

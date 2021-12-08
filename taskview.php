@@ -10,7 +10,12 @@
     <meta charset="utf-8">
     <link href="normalize.css" rel="stylesheet" type="text/css"/>
     <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+    <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
+    <script src="jquery-3.6.0.js"></script>
     <title>List View</title>
+
+    
+    
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,13 +24,6 @@
   </div>
   
   <body>
-
-    <script type="text/javascript">
-      function assign(link) {
-         window.location.assign(link);
-      }
-    </script>
-    
     <div class="sidebar">
 
       <div id="task_list_div"><p><strong>Task List</strong></p></div>
@@ -33,18 +31,11 @@
       <button id="button_addtask">+</button>
       <button id="button_logout">L</button>
 
-      <script type="text/javascript">
-	document.getElementById("task_list_div").addEventListener("click", function() {assign("taskview.php");});
-	document.getElementById("cal_div").addEventListener("click", function() {
-	    let d = new Date(Date.now());
-	    assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
-	});
-	document.getElementById("button_addtask").addEventListener("click", function() {assign("addtask.php");});
-	document.getElementById("button_logout").addEventListener("click", function() {assign("logout.php");});
-      </script>
+      
     </div>
 
     <div id="list-content-area">
+      
       <?php
        if ($tasks->num_rows > 0) {
          while ($row = $tasks->fetch_assoc()) {
@@ -52,7 +43,23 @@
          }
        }
       ?>
+
     </div>
+
+    <script type="text/javascript">
+      $("#task_list_div").click(function() {assign("taskview.php");});
+      $("#cal_div").click(function() {
+	  let d = new Date(Date.now());
+	  assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
+      });
+      $("#button_addtask").click(function() {assign("addtask.php");});
+      $("#button_logout").click(function() {assign("logout.php");});
+
+      function assign(link) {
+          window.location.assign(link);
+      }
+      
+    </script>
   </body>
   
 </html>
