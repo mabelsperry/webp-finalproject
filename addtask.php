@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php
-   require("conn.php");
+   require("acquireid.php");
+   
    ?>
   <head>
     <meta charset="utf-8">
@@ -139,6 +140,21 @@
 	  <label>Details</label>:
 	  <input type="text" name="details" class="mov"
 		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
+	</div>
+	<div>
+	  <input type="checkbox" name="isFolder" class="mov"
+		 value="<?php echo $task_stats['isFolder'] ?>"><br>
+	  <label for="isFolder">Is a folder?</label>
+	</div>
+	<div>
+	  <label for="folderID">Select Folder:</label>
+	  <select name="folderID" class="mov">
+	    <?php foreach($tasks as $t) {
+	       if ($t['fID']) {
+	         echo '<option value=\"$t[fID]\">$f</option>';
+	       }
+	     }
+	    ?>
 	</div>
 	<input type="submit" value="<?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task!" id="submit">
       </form>

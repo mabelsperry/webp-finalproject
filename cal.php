@@ -11,9 +11,9 @@ if ($result = $conn->query("SHOW TABLES LIKE 'Calendar' ")) {
 	$insert = $conn -> prepare("INSERT INTO Calendar (dow, year, month, day, wc) VALUES ( ?, ?, ?, ?, ? )");
         $insert -> bind_param("sisii", $dow, $year, $month, $day, $week_counter);
 	$week_counter = 0;
-	for($x = 1; $x <= 3650; $x++) {
+	for($x = 1; $x <= (365 * 50); $x++) {
 	
-	       $ts = mktime(0, 0, 0, 1, $x, 2021);
+	       $ts = mktime(0, 0, 0, 1, $x, 2010);
                $dow = date("l", $ts);
                $year = date("Y", $ts);
                $month = date("n", $ts);
