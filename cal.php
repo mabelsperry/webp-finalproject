@@ -56,32 +56,42 @@ $month_query = $conn -> query(" SELECT Calendar.wc, Calendar.year, Calendar.mont
 
 
 function printDayTasks($row, $t) {
-	 // $row = $row->fetch_assoc();
-         echo " $row[day] ";
+	 echo " $row[day] ";
 
 	 $todayTasks = array();
-	 foreach ($t as $tsk) {
-	 	 $date1 = date_create($tsk['dateStart']);
+
+	 // For every existing task for the user, check if it occurs on the current calendar day.
+	 // If it does, push it onto $todayTasks.
+	 foreach ($t as $task) {
+	 	 $date1 = date_create($task['dateStart']);
 		 $date2 = date_create($row['year'] . "-" . $row['month'] . "-" . $row['day']);
 		 
 		 $date1_Str = date_format($date1,"Y-n-j");
 		 $date2_Str = date_format($date2,"Y-n-j");
 		 		 
 		 if (strncasecmp($date1_Str, $date2_Str,10) == 0) {
-		    array_push($todayTasks, $tsk);
+		    array_push($todayTasks, $task);
 		 }
 	 	 
 	 }
-	 
+
+	 // Prints each task on the given day.
 	 foreach ($todayTasks as $row) {
-	 	 echo "<div> $row[taskName] </div>";
+	 	 echo "<div id=\"dayTask$task[taskID]\"> $row[taskName] </div>";
+		 echo "<script type=\"text/javascript\">
+		      $(\"#dayTask$task[taskID]\").click(function() {assign(\"addtask.php?taskID=$task[taskID]\");});
+		      </script>";
 	 }
       	 
 }
 
 
 function printDay($q, $t) {
+
+	 // While there is a day left in the month query, $f equals that day
 	 while ($f = $q->fetch_assoc()) {
+	 
+	       // If it is outside of the current viewing month, display it darker.
 	       if ($f['month'] != date_format(date_create($_GET['viewdate']), "n")) {
                	  echo '<div style="background-color: darkgrey;">';
 		  printDayTasks($f, $t);

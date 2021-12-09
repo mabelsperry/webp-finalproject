@@ -86,6 +86,11 @@
     font-size: 20px;
 }
 
+#cal-content-area > div > div:hover {
+    background-color: violet;
+    cursor: pointer;
+}
+
 #cal-content-area > div:hover {
     width: 14.2857%;
     border: 1px dashed black;

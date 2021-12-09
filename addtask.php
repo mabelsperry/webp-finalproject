@@ -150,11 +150,12 @@
 	  <label for="folderID">Select Folder:</label>
 	  <select name="folderID" class="mov">
 	    <?php foreach($tasks as $t) {
-	       if ($t['fID']) {
-	         echo '<option value=\"$t[fID]\">$f</option>';
+	       if ($t['isFolder']) {
+	         echo "<option value=\"$t[fID]\">$t[taskName]</option>";
 	       }
 	     }
 	    ?>
+	    </select>
 	</div>
 	<input type="submit" value="<?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task!" id="submit">
       </form>
