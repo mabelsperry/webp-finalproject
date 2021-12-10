@@ -11,9 +11,9 @@ if ($result = $conn->query("SHOW TABLES LIKE 'Calendar' ")) {
 	$insert = $conn -> prepare("INSERT INTO Calendar (dow, year, month, day, wc) VALUES ( ?, ?, ?, ?, ? )");
         $insert -> bind_param("sisii", $dow, $year, $month, $day, $week_counter);
 	$week_counter = 0;
-	for($x = 1; $x <= (365 * 50); $x++) {
+	for($x = 1; $x <= 3650; $x++) {
 	
-	       $ts = mktime(0, 0, 0, 1, $x, 2010);
+	       $ts = mktime(0, 0, 0, 1, $x, 2021);
                $dow = date("l", $ts);
                $year = date("Y", $ts);
                $month = date("n", $ts);
@@ -56,42 +56,32 @@ $month_query = $conn -> query(" SELECT Calendar.wc, Calendar.year, Calendar.mont
 
 
 function printDayTasks($row, $t) {
-	 echo " $row[day] ";
+	 // $row = $row->fetch_assoc();
+         echo " $row[day] ";
 
 	 $todayTasks = array();
-
-	 // For every existing task for the user, check if it occurs on the current calendar day.
-	 // If it does, push it onto $todayTasks.
-	 foreach ($t as $task) {
-	 	 $date1 = date_create($task['dateStart']);
+	 foreach ($t as $tsk) {
+	 	 $date1 = date_create($tsk['dateStart']);
 		 $date2 = date_create($row['year'] . "-" . $row['month'] . "-" . $row['day']);
 		 
 		 $date1_Str = date_format($date1,"Y-n-j");
 		 $date2_Str = date_format($date2,"Y-n-j");
 		 		 
 		 if (strncasecmp($date1_Str, $date2_Str,10) == 0) {
-		    array_push($todayTasks, $task);
+		    array_push($todayTasks, $tsk);
 		 }
 	 	 
 	 }
-
-	 // Prints each task on the given day.
+	 
 	 foreach ($todayTasks as $row) {
-	 	 echo "<div id=\"dayTask$task[taskID]\"> $row[taskName] </div>";
-		 echo "<script type=\"text/javascript\">
-		      $(\"#dayTask$task[taskID]\").click(function() {assign(\"addtask.php?taskID=$task[taskID]\");});
-		      </script>";
+	 	 echo "<div> $row[taskName] </div>";
 	 }
       	 
 }
 
 
 function printDay($q, $t) {
-
-	 // While there is a day left in the month query, $f equals that day
 	 while ($f = $q->fetch_assoc()) {
-	 
-	       // If it is outside of the current viewing month, display it darker.
 	       if ($f['month'] != date_format(date_create($_GET['viewdate']), "n")) {
                	  echo '<div style="background-color: darkgrey;">';
 		  printDayTasks($f, $t);

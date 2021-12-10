@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php
-   require("acquireid.php");
-   
+   require("conn.php");
    ?>
   <head>
     <meta charset="utf-8">
     <link href="normalize.css" rel="stylesheet" type="text/css"/>
-    <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="stylesheet.css"  type="text/css"/>
     <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
     <script src="jquery-3.6.0.js"></script>
     <title>Add Task</title>
@@ -20,13 +19,13 @@
           window.location.assign(link);
       }
     </script>
-    
-    <div class="sidebar">
-      <div id="task_list_div"><p><strong>Task List</strong></p></div>
-      <div id="cal_div"><p><strong>Calendar</strong></p></div>
-      <button id="button_addtask">+</button>
-      <button id="button_logout">L</button>
-     
+
+    <div class="AddTasksidebar">
+      <a href="taskview.php" class="myButton">Task List</a>
+      <a href="calendarview.php" class="myButton">Calender</a>
+      <a href="addtask.php" class="myButton">Add Task</a>
+      <a href="logout.php" class="myButton">Logout</a>
+
       <script type="text/javascript">
 	$("#task_list_div").click(function() {assign("taskview.php");});
 	$("#cal_div").click(function() {
@@ -37,21 +36,20 @@
 	$("#button_logout").click(function() {assign("logout.php");});
       </script>
     </div>
-    
+
     <div id="list-content-area">
 
-      <?php	 
+      <?php
 	 $taskID = filter_input(INPUT_GET, 'taskID',FILTER_VALIDATE_INT);
 	 if ($taskID !=  FALSE) {
 	   $task_stats = $conn->query("SELECT tasks.* FROM tasks WHERE taskID=${taskID}");
-	   $task_stats = $task_stats->fetch_assoc();	   
+	   $task_stats = $task_stats->fetch_assoc();
 	} else {
 	   $task_stats = array("taskName"=>"", "dateStart"=>"", "dateStop"=>"",
-                               "timeStart"=>"", "timeStop"=>"", "taskDetails"=>"",
-                               "isFolder"=>"0", "folderID"=>"0");
+	                       "timeStart"=>"", "timeStop"=>"", "taskDetails"=>"");
 	}
 	 ?>
-      
+
       <h1><?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task</h1>
       <form
 	action="<?php echo ($taskID !=  FALSE) ? "modify_task.php?taskID=${taskID}" : 'insert_task.php'; ?>"
@@ -64,7 +62,6 @@
 	      padding: 10px;
 	      background-color: lightgrey;
 	      font-size: 20px;
-	      display: block;
 	  }
 
 	  input[type=text] {
@@ -81,7 +78,7 @@
 		  msg.innerHTML = "Input invalid :(";
 	      } else {
 		  msg.innerHTML = "Input valid :)";
-	      } 
+	      }
 	  }
 
 
@@ -95,9 +92,9 @@
 	  }
 
 	</script>
-	
+
 	<div>
-	  
+
 	  <label>Title</label>:
 	  <input type="text" name="title" class="mov"
 		 value="<?php echo $task_stats['taskName'] ?>" required><br>
@@ -113,10 +110,10 @@
 		 value="<?php echo $task_stats['dateStop'] ?>">
 	  <span id="dateStop_input_msg"></span>
 	  <script>
-	    $("#dateStop_input").change( function() {
-		validateMinDate($("#dateStart_input"),
-				$("#dateStop_input"),
-				$("#dateStop_input_msg"));
+	    document.getElementById("dateStop_input").addEventListener("change", function() {
+		validateMinDate(document.getElementById("dateStart_input"),
+				document.getElementById("dateStop_input"),
+				document.getElementById("dateStop_input_msg"));
 	    });
 	  </script>
 	</div>
@@ -131,10 +128,10 @@
 		 value="<?php echo $task_stats['taskStop'] ?>">
 	  <span id="timeStop_input_msg"></span>
 	  <script>
-	    $("#timeStop_input").change( function() {
-		validateMinDate($("#timeStart_input"),
-				$("#timeStop_input"),
-				$("#timeStop_input_msg"));
+	    document.getElementById("timeStop_input").addEventListener("change", function() {
+		validateMinDate(document.getElementById("timeStart_input"),
+				document.getElementById("timeStop_input"),
+				document.getElementById("timeStop_input_msg"));
 	    });
 	  </script>
 	</div>
@@ -143,35 +140,10 @@
 	  <input type="text" name="details" class="mov"
 		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
 	</div>
-	<div style="display: <?php echo ($taskID !=  FALSE) ? 'block"' : 'none"'; ?>>
-	  <input id="isFolderBox" type="checkbox" name="isFolder" class="mov" value="1" <?php if ($task_stats['isFolder']) {echo 'checked';} ?>><br>
-	  <label for="isFolder" >Is a folder?</label>
-	  <script>
-	    $("#isFolderBox").click( function() {
-		if(this.checked) {
-		    document.getElementById("fID").style.display = "none";
-		} else {
-		    document.getElementById("fID").style.display = "block";
-		}
-	    });
-	  </script>
-	</div>
-	<div id="fID">
-	  <label for="folderID">Select Folder:</label>
-	  <select name="folderID" class="mov">
-	    <option value="0">None</option>
-	    <?php foreach($tasks as $t) {
-	       if ($t['isFolder']) {
-	         echo "<option value=\"$t[taskID]\"> $t[taskName] </option>";
-	       }
-	     }
-	    ?>
-	    </select>
-	</div>
 	<input type="submit" value="<?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task!" id="submit">
       </form>
     </div>
-    
+
 
   </body>
 
