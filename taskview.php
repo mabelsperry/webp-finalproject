@@ -13,9 +13,6 @@
     <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
     <script src="jquery-3.6.0.js"></script>
     <title>List View</title>
-
-    
-    
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -30,8 +27,6 @@
       <div id="cal_div"><p><strong>Calendar</strong></p></div>
       <button id="button_addtask">+</button>
       <button id="button_logout">L</button>
-
-      
     </div>
 
     <div id="list-content-area">

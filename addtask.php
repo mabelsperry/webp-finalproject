@@ -14,33 +14,17 @@
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
-
-    <script type="text/javascript">
-      function assign(link) {
-          window.location.assign(link);
-      }
-    </script>
     
     <div class="sidebar">
       <div id="task_list_div"><p><strong>Task List</strong></p></div>
       <div id="cal_div"><p><strong>Calendar</strong></p></div>
       <button id="button_addtask">+</button>
       <button id="button_logout">L</button>
-     
-      <script type="text/javascript">
-	$("#task_list_div").click(function() {assign("taskview.php");});
-	$("#cal_div").click(function() {
-	    let d = new Date(Date.now());
-	    assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
-	});
-	$("#button_addtask").click(function() {assign("addtask.php");});
-	$("#button_logout").click(function() {assign("logout.php");});
-      </script>
     </div>
     
     <div id="list-content-area">
 
-      <?php	 
+      <?php
 	 $taskID = filter_input(INPUT_GET, 'taskID',FILTER_VALIDATE_INT);
 	 if ($taskID !=  FALSE) {
 	   $task_stats = $conn->query("SELECT tasks.* FROM tasks WHERE taskID=${taskID}");
@@ -57,9 +41,8 @@
 	action="<?php echo ($taskID !=  FALSE) ? "modify_task.php?taskID=${taskID}" : 'insert_task.php'; ?>"
 	method="post">
 	<style>
-	  div {
+	  form > div {
 	      width: 100%;
-	      border-radius: 10px;
 	      border: 1px dashed black;
 	      padding: 10px;
 	      background-color: lightgrey;
@@ -172,7 +155,21 @@
       </form>
     </div>
     
+  <script type="text/javascript">
+	$("#task_list_div").click(function() {assign("taskview.php");});
+	$("#cal_div").click(function() {
+	    let d = new Date(Date.now());
+	    assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
+	});
+	$("#button_addtask").click(function() {assign("addtask.php");});
+	$("#button_logout").click(function() {assign("logout.php");});
 
+
+	function assign(link) {
+          window.location.assign(link);
+	}
+
+      </script>
   </body>
 
 </html>
