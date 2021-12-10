@@ -47,7 +47,8 @@
 	   $task_stats = $task_stats->fetch_assoc();	   
 	} else {
 	   $task_stats = array("taskName"=>"", "dateStart"=>"", "dateStop"=>"",
-	                       "timeStart"=>"", "timeStop"=>"", "taskDetails"=>"");
+                               "timeStart"=>"", "timeStop"=>"", "taskDetails"=>"",
+                               "isFolder"=>"0", "folderID"=>"0");
 	}
 	 ?>
       
@@ -63,6 +64,7 @@
 	      padding: 10px;
 	      background-color: lightgrey;
 	      font-size: 20px;
+	      display: block;
 	  }
 
 	  input[type=text] {
@@ -141,13 +143,23 @@
 	  <input type="text" name="details" class="mov"
 		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
 	</div>
-	<div>
-	  <input type="checkbox" name="isFolder" class="mov" value="1"><br>
-	  <label for="isFolder">Is a folder?</label>
+	<div style="display: <?php echo ($taskID !=  FALSE) ? 'block"' : 'none"'; ?>>
+	  <input id="isFolderBox" type="checkbox" name="isFolder" class="mov" value="1" <?php if ($task_stats['isFolder']) {echo 'checked';} ?>><br>
+	  <label for="isFolder" >Is a folder?</label>
+	  <script>
+	    $("#isFolderBox").click( function() {
+		if(this.checked) {
+		    document.getElementById("fID").style.display = "none";
+		} else {
+		    document.getElementById("fID").style.display = "block";
+		}
+	    });
+	  </script>
 	</div>
-	<div>
+	<div id="fID">
 	  <label for="folderID">Select Folder:</label>
 	  <select name="folderID" class="mov">
+	    <option value="0">None</option>
 	    <?php foreach($tasks as $t) {
 	       if ($t['isFolder']) {
 	         echo "<option value=\"$t[taskID]\"> $t[taskName] </option>";

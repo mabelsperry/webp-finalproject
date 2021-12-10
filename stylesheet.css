@@ -116,6 +116,7 @@
     padding: 10px;
     background-color: lightgrey;
     font-size: 20px;
+    display: block;
 }
 
 .list-content-div:hover {
@@ -149,6 +150,21 @@
 
 .modify_task:hover {
     background-color: blueviolet;
+    cursor: pointer;
+}
+
+.view_folder {
+    border-radius: 10px;
+    width: 100px;
+    float: right;
+    text-align: center;
+    border: 1px dashed black;
+    padding: 10px;
+    background-color: darkorchid;
+}
+
+.view_folder:hover {
+    background-color: darkmagenta;
     cursor: pointer;
 }
 

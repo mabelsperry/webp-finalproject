@@ -37,9 +37,26 @@
     <div id="list-content-area">
       
       <?php
-       if ($tasks->num_rows > 0) {
-         while ($row = $tasks->fetch_assoc()) {
-            printTask($row);
+
+       $arr = $tasks->fetch_all(MYSQLI_ASSOC);
+         if (array_key_exists("taskID", $_GET)) {
+           $pop = array_filter($arr, "filterFolderParent");
+           $val = array_shift($pop);
+           while ($val != NULL && $val['taskID'] != $_GET['taskID'] ) {
+             $val = array_shift($pop);
+           }
+         printTask($val);
+       }
+
+
+       if (count($arr) > 0) {
+      foreach ($arr as $row) {
+      if ((array_key_exists("taskID", $_GET)
+           && $row['fID'] == $_GET['taskID']
+           && $row['taskID'] != $_GET['taskID'])
+           || !array_key_exists("taskID", $_GET)) {
+              printTask($row);
+           }
          }
        }
       ?>

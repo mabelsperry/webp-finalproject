@@ -10,6 +10,7 @@ $dateStop = $data["dateStop"];
 $timeStart = $data["timeStart"];
 $timeStop = $data["timeStop"];
 $details = $data["details"];
+$folderID = $data["folderID"];
 
 // Sanitize input
 
@@ -35,7 +36,8 @@ if ($timeStop == "" || $timeStop == NULL) {
    $timeStop = "00:00:00";
 }
 
-$sql = "INSERT INTO `tasks` (`userID`, `taskName`, `taskDetails`, `dateStart`, `dateStop`, `timeStart`, `timeStop` )
+
+$sql = "INSERT INTO `tasks` (`userID`, `taskName`, `taskDetails`, `dateStart`, `dateStop`, `timeStart`, `timeStop`)
         VALUES ('$ID', '$title', '$details', '$dateStart', '$dateStop','$timeStart', '$timeStop')";
 
 $conn -> query($sql);

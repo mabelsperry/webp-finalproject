@@ -11,8 +11,8 @@ $dateStop = $data['dateStop'];
 $timeStart = $data['timeStart'];
 $timeStop = $data['timeStop'];
 $details = $data['details'];
-$isFolder = $data['isFolder'];
-$folderID = $data['folderID'];
+$isFolder = (array_key_exists('isFolder', $data)) ? $data['isFolder'] : 0;
+$fID = $data['folderID'];
 
 // Sanitize input
 
@@ -47,7 +47,7 @@ if ($isFolder != '') {
 	   `timeStart` = '$timeStart',
 	   `timeStop` = '$timeStop',
 	   `isFolder` = '$isFolder',
-	   `fID` = '$folderID'
+	   `fID` = '$taskID'
 	   WHERE `tasks`.`taskID` = $taskID ";
 } else {
   $sql = "UPDATE `tasks` 
@@ -57,7 +57,8 @@ if ($isFolder != '') {
 	   `dateStop` = '$dateStop',
 	   `timeStart` = '$timeStart',
 	   `timeStop` = '$timeStop',
-	   `fID` = '$folderID'
+	   `isFolder` = '$isFolder',
+	   `fID` = '$fID'
 	   WHERE `tasks`.`taskID` = $taskID ";
 }
 

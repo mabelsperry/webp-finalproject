@@ -22,13 +22,28 @@ function printTask($t) {
 	}
 	echo "<br><i>" . $t['taskID'] . "</i></p>
 			<div id=\"d$t[taskID]\" class=\"delete_task\">D</div>
-			<div id=\"m$t[taskID]\" class=\"modify_task\">M</div>
-			</div>";
+			<div id=\"m$t[taskID]\" class=\"modify_task\">M</div>";
+			if ($t['isFolder'] != 0) {
+			   echo "<div id=\"vf$t[taskID]\" class=\"view_folder\">View Folder</div></div>";
+			} else {
+			  echo "</div>";
+			}
 
 	echo "<script type=\"text/javascript\">
 		      $(\"#d$t[taskID]\").click(function() {assign(\"deleteTask.php?taskID=$t[taskID]\");});
-		      $(\"#m$t[taskID]\").click(function() {assign(\"addtask.php?taskID=$t[taskID]\");});
-	      </script>";
+		      $(\"#m$t[taskID]\").click(function() {assign(\"addtask.php?taskID=$t[taskID]\");}); ";
+
+		      // print_r($t);
+
+        if ($t['isFolder'] != 0) {
+	   echo "$(\"#vf$t[taskID]\").click(function() {assign(\"taskview.php?taskID=$t[taskID]\");}); ";
+	}
+	echo "</script>";
+}
+
+// Callback function to find the parent of a folder.
+function filterFolderParent ($t) {
+	 return ($t['isFolder'] == 1 && $t['fID'] == $t['taskID']);
 }
 
 ?>
