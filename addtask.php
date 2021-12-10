@@ -143,7 +143,7 @@
 	</div>
 	<div>
 	  <input type="checkbox" name="isFolder" class="mov"
-		 value="<?php echo $task_stats['isFolder'] ?>"><br>
+		 value="1"><br>
 	  <label for="isFolder">Is a folder?</label>
 	</div>
 	<div>
