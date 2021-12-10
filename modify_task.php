@@ -11,6 +11,8 @@ $dateStop = $data['dateStop'];
 $timeStart = $data['timeStart'];
 $timeStop = $data['timeStop'];
 $details = $data['details'];
+$isFolder = $data['isFolder'];
+$folderID = $data['folderID'];
 
 // Sanitize input
 
@@ -36,14 +38,28 @@ if ($timeStop == "" || $timeStop == NULL) {
    $timeStop = "00:00:00";
 }
 
-$sql = "UPDATE `tasks` 
-        SET `taskName` = '$title',
-	    `taskDetails` = '$details',
-	    `dateStart` = '$dateStart',
-	    `dateStop` = '$dateStop',
-	    `timeStart` = '$timeStart',
-	    `timeStop` = '$timeStop'
-	WHERE `tasks`.`taskID` = $taskID ";
+if ($isFolder != '') {
+   $sql = "UPDATE `tasks` 
+   	   SET `taskName` = '$title',
+	   `taskDetails` = '$details',
+	   `dateStart` = '$dateStart',
+	   `dateStop` = '$dateStop',
+	   `timeStart` = '$timeStart',
+	   `timeStop` = '$timeStop',
+	   `isFolder` = '$isFolder',
+	   `fID` = '$folderID'
+	   WHERE `tasks`.`taskID` = $taskID ";
+} else {
+  $sql = "UPDATE `tasks` 
+   	   SET `taskName` = '$title',
+	   `taskDetails` = '$details',
+	   `dateStart` = '$dateStart',
+	   `dateStop` = '$dateStop',
+	   `timeStart` = '$timeStart',
+	   `timeStop` = '$timeStop',
+	   `fID` = '$folderID'
+	   WHERE `tasks`.`taskID` = $taskID ";
+}
 
 $conn -> query($sql);
 

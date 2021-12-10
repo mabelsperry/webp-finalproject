@@ -111,10 +111,10 @@
 		 value="<?php echo $task_stats['dateStop'] ?>">
 	  <span id="dateStop_input_msg"></span>
 	  <script>
-	    document.getElementById("dateStop_input").addEventListener("change", function() {
-		validateMinDate(document.getElementById("dateStart_input"),
-				document.getElementById("dateStop_input"),
-				document.getElementById("dateStop_input_msg"));
+	    $("#dateStop_input").change( function() {
+		validateMinDate($("#dateStart_input"),
+				$("#dateStop_input"),
+				$("#dateStop_input_msg"));
 	    });
 	  </script>
 	</div>
@@ -129,10 +129,10 @@
 		 value="<?php echo $task_stats['taskStop'] ?>">
 	  <span id="timeStop_input_msg"></span>
 	  <script>
-	    document.getElementById("timeStop_input").addEventListener("change", function() {
-		validateMinDate(document.getElementById("timeStart_input"),
-				document.getElementById("timeStop_input"),
-				document.getElementById("timeStop_input_msg"));
+	    $("#timeStop_input").change( function() {
+		validateMinDate($("#timeStart_input"),
+				$("#timeStop_input"),
+				$("#timeStop_input_msg"));
 	    });
 	  </script>
 	</div>
@@ -142,8 +142,7 @@
 		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
 	</div>
 	<div>
-	  <input type="checkbox" name="isFolder" class="mov"
-		 value="1"><br>
+	  <input type="checkbox" name="isFolder" class="mov" value="1"><br>
 	  <label for="isFolder">Is a folder?</label>
 	</div>
 	<div>
@@ -151,7 +150,7 @@
 	  <select name="folderID" class="mov">
 	    <?php foreach($tasks as $t) {
 	       if ($t['isFolder']) {
-	         echo "<option value=\"$t[fID]\">$t[taskName]</option>";
+	         echo "<option value=\"$t[taskID]\"> $t[taskName] </option>";
 	       }
 	     }
 	    ?>
