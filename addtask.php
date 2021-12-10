@@ -32,7 +32,7 @@
 	} else {
 	   $task_stats = array("taskName"=>"", "dateStart"=>"", "dateStop"=>"",
                                "timeStart"=>"", "timeStop"=>"", "taskDetails"=>"",
-                               "isFolder"=>"0", "folderID"=>"0");
+                               "isFolder"=>"0", "folderID"=>"0", "color"=>"NULL");
 	}
 	 ?>
       
@@ -121,12 +121,29 @@
 	    });
 	  </script>
 	</div>
+	<div id="color_selector_div"
+	     <?php if ($task_stats['color'] != NULL) 
+	         echo "style=\"background-color: $task_stats[color];\"";
+	      ?>>
+	  <label for="color">Color: </label>
+	  <select id="color_selector" name="color" class="mov">
+	    <option value="NULL" <?php if ($task_stats['color'] == NULL) echo 'selected' ?>>None</option>
+	    <option value="aqua" <?php if ($task_stats['color'] == 'aqua') echo 'selected' ?>>Aqua</option>
+	    <option value="chartreuse" <?php if ($task_stats['color'] == 'chartreuse') echo 'selected' ?>>Chartreuse</option>
+	    <option value="darkorchid" <?php if ($task_stats['color'] == 'darkorchid') echo 'selected' ?>>Dark Orchid</option>
+	    <option value="crimson" <?php if ($task_stats['color'] == 'crimson') echo 'selected' ?>>Crimson</option>
+	    <option value="darkgoldenrod" <?php if ($task_stats['color'] == 'darkgoldenrod') echo 'selected' ?>>Dark Golden Rod</option>
+	    <option value="lightseagreen" <?php if ($task_stats['color'] == 'lightseagreen') echo 'selected' ?>>Light Sea Green</option>
+	    <option value="steelblue" <?php if ($task_stats['color'] == 'steelblue') echo 'selected' ?>>Steel Blue</option>
+	    <option value="meduiumvioletred" <?php if ($task_stats['color'] == 'mediumvioletred') echo 'selected' ?>>Medium Violet Red</option>
+	  </select>
+	</div>
 	<div>
 	  <label>Details</label>:
-	  <input type="text" name="details" class="mov"
+	  <input type="text" name="details" class="mov" style="height: 200px;"
 		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
 	</div>
-	<div style="display: <?php echo ($taskID !=  FALSE) ? 'block"' : 'none"'; ?>>
+	<div style="display: <?php echo ($taskID !=  FALSE) ? 'block' : 'none'; ?> ">
 	  <input id="isFolderBox" type="checkbox" name="isFolder" class="mov" value="1" <?php if ($task_stats['isFolder']) {echo 'checked';} ?>><br>
 	  <label for="isFolder" >Is a folder?</label>
 	  <script>
@@ -143,33 +160,42 @@
 	  <label for="folderID">Select Folder:</label>
 	  <select name="folderID" class="mov">
 	    <option value="0">None</option>
-	    <?php foreach($tasks as $t) {
-	       if ($t['isFolder']) {
-	         echo "<option value=\"$t[taskID]\"> $t[taskName] </option>";
-	       }
-	     }
-	    ?>
-	    </select>
+	    <?php 
+	     foreach($tasks as $t) {
+	            if ($t['isFolder']) {
+		    echo "<option id=\"opt$t[taskID]\" style=\"background-color: $t[color]\" value=\"$t[taskID]\" ";
+		        if ($task_stats['fID'] == $t['taskID']) echo 'selected';
+	                  echo ">$t[taskName]</option>\n";
+                    }
+                  }
+             ?>
+	  </select>
 	</div>
 	<input type="submit" value="<?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task!" id="submit">
       </form>
     </div>
     
-  <script type="text/javascript">
-	$("#task_list_div").click(function() {assign("taskview.php");});
-	$("#cal_div").click(function() {
-	    let d = new Date(Date.now());
-	    assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
-	});
-	$("#button_addtask").click(function() {assign("addtask.php");});
-	$("#button_logout").click(function() {assign("logout.php");});
+    <script type="text/javascript">
+      $("#task_list_div").click(function() {assign("taskview.php");});
+      $("#cal_div").click(function() {
+          let d = new Date(Date.now());
+          assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
+      });
+      $("#button_addtask").click(function() {assign("addtask.php");});
+      $("#button_logout").click(function() {assign("logout.php");});
+      $("#color_selector").change(function() {
+          $("#color_selector_div").css("background-color", $("#color_selector").val());
+      });
+      $("#folderID").change(function() {
+          var folderval = $("#folderID").val();
+          $("#color_selector").val($("#opt" + folderval).css("background-color"));
+      });
 
+      function assign(link) {
+      window.location.assign(link);
+      }
 
-	function assign(link) {
-          window.location.assign(link);
-	}
-
-      </script>
+    </script>
   </body>
 
 </html>

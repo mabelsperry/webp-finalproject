@@ -13,6 +13,7 @@ $timeStop = $data['timeStop'];
 $details = $data['details'];
 $isFolder = (array_key_exists('isFolder', $data)) ? $data['isFolder'] : 0;
 $fID = $data['folderID'];
+$color = $data['color'];
 
 // Sanitize input
 
@@ -47,7 +48,8 @@ if ($isFolder != '') {
 	   `timeStart` = '$timeStart',
 	   `timeStop` = '$timeStop',
 	   `isFolder` = '$isFolder',
-	   `fID` = '$taskID'
+	   `fID` = '$taskID',
+	   `color` = '$color'
 	   WHERE `tasks`.`taskID` = $taskID ";
 } else {
   $sql = "UPDATE `tasks` 
@@ -58,7 +60,8 @@ if ($isFolder != '') {
 	   `timeStart` = '$timeStart',
 	   `timeStop` = '$timeStop',
 	   `isFolder` = '$isFolder',
-	   `fID` = '$fID'
+	   `fID` = '$fID',
+	   `color` = '$color'
 	   WHERE `tasks`.`taskID` = $taskID ";
 }
 

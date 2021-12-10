@@ -2,7 +2,7 @@
 
 function printTask($t) {
 
-	echo "<div class=\"list-content-div\" id=\"$t[taskID]\">
+	echo "<div style=\"background-color: $t[color]\" class=\"list-content-div\" id=\"$t[taskID]\">
 	<p width=\"90%\"><strong>$t[taskName]</strong>";
 	if ($t['taskDetails']) {
 	   echo "<strong>: </strong>" . $t['taskDetails'] ;
@@ -14,13 +14,20 @@ function printTask($t) {
 	   echo "<br><b>End Date: </b>" . $t['dateStop'] ;
 	}
 
-	if ( strncasecmp($t['timeStart'], "00:00:00", 11 ) != 0) {
+	if ( strncasecmp($t['timeStart'], "00:00:00", 11 ) != 0 ) {
 	   echo "<br><b>Start Time: </b>" . $t['timeStart'] ;
 	}
-	if ( strncasecmp($t['timeStop'], "00:00:00", 11 ) != 0) {
+	if ( strncasecmp($t['timeStop'], "00:00:00", 11 ) != 0 ) {
 	   echo "<br><b>End Time: </b>" . $t['timeStop'] ;
 	}
-	echo "<br><i>" . $t['taskID'] . "</i></p>
+
+	echo "<br><b>Task ID: </b>" . $t['taskID'] ;
+
+	if ($t['fID'] != 0 && $t['fID'] != NULL) {
+	   echo "<br><b>Folder ID: </b>" . $t['fID'] ;
+	}
+
+	echo "<br></p>
 			<div id=\"d$t[taskID]\" class=\"delete_task\">D</div>
 			<div id=\"m$t[taskID]\" class=\"modify_task\">M</div>";
 			if ($t['isFolder'] != 0) {
@@ -32,8 +39,6 @@ function printTask($t) {
 	echo "<script type=\"text/javascript\">
 		      $(\"#d$t[taskID]\").click(function() {assign(\"deleteTask.php?taskID=$t[taskID]\");});
 		      $(\"#m$t[taskID]\").click(function() {assign(\"addtask.php?taskID=$t[taskID]\");}); ";
-
-		      // print_r($t);
 
         if ($t['isFolder'] != 0) {
 	   echo "$(\"#vf$t[taskID]\").click(function() {assign(\"taskview.php?taskID=$t[taskID]\");}); ";

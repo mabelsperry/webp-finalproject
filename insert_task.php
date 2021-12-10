@@ -11,6 +11,7 @@ $timeStart = $data["timeStart"];
 $timeStop = $data["timeStop"];
 $details = $data["details"];
 $folderID = $data["folderID"];
+$color = $data["color"];
 
 // Sanitize input
 
@@ -37,8 +38,8 @@ if ($timeStop == "" || $timeStop == NULL) {
 }
 
 
-$sql = "INSERT INTO `tasks` (`userID`, `taskName`, `taskDetails`, `dateStart`, `dateStop`, `timeStart`, `timeStop`)
-        VALUES ('$ID', '$title', '$details', '$dateStart', '$dateStop','$timeStart', '$timeStop')";
+$sql = "INSERT INTO `tasks` (`userID`, `taskName`, `taskDetails`, `dateStart`, `dateStop`, `timeStart`, `timeStop`, `fID`, `color`)
+        VALUES ('$ID', '$title', '$details', '$dateStart', '$dateStop','$timeStart', '$timeStop', '$folderID', '$color')";
 
 $conn -> query($sql);
 
