@@ -27,16 +27,12 @@
 
   <body>
     <div class="newTasksidebar">
-
-      <a href="taskview.php" class="myButton">Task List</a>
-      <a href="calendarview.php" class="myButton">Calender</a>
-      <a href="addtask.php" class="myButton">Add Task</a>
-      <a href="logout.php" class="myButton">Logout</a>
+      <div id="task_list_div" class="myButton"><p><strong>Task List</strong></p></div>
+      <div id="cal_div" class="myButton"><p><strong>Calendar</strong></p></div>
+      <div id="button_addtask" class="myButton"><p><strong>Add Task</strong></p></div>
+      <div id="button_logout" class="myButton"><p><strong>Logout</strong></p></div>
 
     </div>
-
-
-
 
     <script type="text/javascript">
   function assign(link) {
@@ -47,10 +43,19 @@
     <div id="list-content-area">
 
       <?php
+      $noResults = "Nooooooooooooooooooooooooooooooooooooooooo";
        if ($tasks->num_rows > 0) {
          while ($row = $tasks->fetch_assoc()) {
             printTask($row);
          }
+       }
+       else {
+         echo "<p style='color: black;
+             font-size: 20px;
+             bottom: 100px;
+             text-align: center;
+             padding-left: 0%;
+             padding-top: 200px;'>" . "You Currently Have 0 Task! Add A Task To Begin! " . "</p>";
        }
       ?>
 

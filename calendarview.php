@@ -24,12 +24,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
 
-    <div class="sidebar">
-
-      <button id="task_list_div" class="myButton">Task List</button>
-      <button id="cal_div" class="myButton">Calendar</button>
-      <button id="button_addtask" class="myButton">Add Task</button>
-      <button id="button_logout" class="myButton">Logout</button>
+    <div class="newTasksidebar">
+      <div id="task_list_div" class="myButton"><p><strong>Task List</strong></p></div>
+      <div id="cal_div" class="myButton"><p><strong>Calendar</strong></p></div>
+      <div id="button_addtask" class="myButton"><p><strong>Add Task</strong></p></div>
+      <div id="button_logout" class="myButton"><p><strong>Logout</strong></p></div>
 
       <script type="text/javascript">
 	$("#task_list_div").click(function() {assign("taskview.php");});

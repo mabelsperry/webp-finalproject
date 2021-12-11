@@ -142,7 +142,7 @@
 	  <input type="text" placeholder="Please Enter the Details of Your Task." name="details" class="mov"
 		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
 	</div>
-	<input type="submit" value="<?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task!" id="submit">
+	<input type="submit" class = "addtaskButton" value="<?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task!" id="submit">
       </form>
     </div>
 
