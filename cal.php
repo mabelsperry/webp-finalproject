@@ -29,9 +29,6 @@ if ($result = $conn->query("SHOW TABLES LIKE 'Calendar' ")) {
    }
 }
 
-
-
-
 $date = date_create($GLOBALS['viewdate']);
 
 // Get today's date, truncated
@@ -90,13 +87,20 @@ function printDay($q, $t) {
 
 	 // While there is a day left in the month query, $f equals that day
 	 while ($f = $q->fetch_assoc()) {
-
+	       $q_today = date_create($f['year'] . "-" . $f['month'] . "-" . $f['day']);
+	       $today = date("Y-n-j");
 	       // If it is outside of the current viewing month, display it darker.
 	       if ($f['month'] != date_format(date_create($_GET['viewdate']), "n")) {
                	  echo "<div id=\"oom$f[day]\" style=\"background-color: darkgrey;\">";
 		  printDayTasks($f, $t);
 	    	  echo '</div>';
-               } else {
+               }
+	       else if (strncasecmp(date_format($q_today, "Y-n-j"), $today, 11) == 0){
+               	  echo "<div id=\"oom$f[day]\" style=\"background-color: lightgreen;\">";
+		  printDayTasks($f, $t);
+	    	  echo '</div>';
+	       }
+	       else {
 	       	  echo "<div id=\"im$f[day]\" style=\"background-color: grey;\">";
 	          printDayTasks($f, $t);
 	          echo '</div>';
