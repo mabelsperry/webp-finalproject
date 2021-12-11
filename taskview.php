@@ -34,8 +34,11 @@
       <?php
 
        $arr = $tasks->fetch_all(MYSQLI_ASSOC);
-         if (array_key_exists("taskID", $_GET)) {
-           $pop = array_filter($arr, "filterFolderParent");
+       $sorted_arr = sortByFolder($arr);
+
+      
+       if (array_key_exists("taskID", $_GET)) {
+           $pop = array_filter($sorted_arr, "filterFolderParent");
            $val = array_shift($pop);
            while ($val != NULL && $val['taskID'] != $_GET['taskID'] ) {
              $val = array_shift($pop);
@@ -43,9 +46,8 @@
          printTask($val);
        }
 
-
-       if (count($arr) > 0) {
-         foreach ($arr as $row) {
+       if (count($sorted_arr) > 0) {
+         foreach ($sorted_arr as $row) {
            if ((array_key_exists("taskID", $_GET)
              && $row['fID'] == $_GET['taskID']
              && $row['taskID'] != $_GET['taskID'])

@@ -51,4 +51,27 @@ function filterFolderParent ($t) {
 	 return ($t['isFolder'] == 1 && $t['fID'] == $t['taskID']);
 }
 
+function sortByFolder($arr) {
+	 $sorted_arr = array();
+
+	 foreach ($arr as $rowx) {
+	     if($rowx['isFolder'] == 1 && $rowx['fID'] == $rowx['taskID']) {
+	         array_push($sorted_arr, $rowx);
+		 foreach ($arr as $rowy) {
+		     if($rowy['isFolder'] != 1 && $rowy['fID'] == $rowx['taskID']) {
+		         array_push($sorted_arr, $rowy);
+		     }
+		 }
+	     }
+	 }
+
+	 foreach ($arr as $rowz) {
+	     if($rowz['isFolder'] != 1 && $rowz['fID'] == 0) {
+	         array_push($sorted_arr, $rowz);
+	     }
+	 }
+
+	 return $sorted_arr;
+}
+
 ?>
