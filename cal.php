@@ -77,9 +77,9 @@ function printDayTasks($row, $t) {
 
 	 // Prints each task on the given day.
 	 foreach ($todayTasks as $row) {
-	 	 echo "<div style=\"background-color: $row[color]\"id=\"dayTask$task[taskID]\"> $row[taskName] </div>";
+	 	 echo "<div style=\"background-color: $row[color]\"id=\"dayTask$row[taskID]\"> $row[taskName] </div>";
 		 echo "<script type=\"text/javascript\">
-		      $(\"#dayTask$task[taskID]\").click(function() {assign(\"addtask.php?taskID=$task[taskID]\");});
+		      $(\"#dayTask$row[taskID]\").click(function() {assign(\"addtask.php?taskID=$row[taskID]\");});
 		      </script>";
 	 }
       	 

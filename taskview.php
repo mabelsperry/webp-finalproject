@@ -45,12 +45,12 @@
 
 
        if (count($arr) > 0) {
-      foreach ($arr as $row) {
-      if ((array_key_exists("taskID", $_GET)
-           && $row['fID'] == $_GET['taskID']
-           && $row['taskID'] != $_GET['taskID'])
-           || !array_key_exists("taskID", $_GET)) {
-              printTask($row);
+         foreach ($arr as $row) {
+           if ((array_key_exists("taskID", $_GET)
+             && $row['fID'] == $_GET['taskID']
+             && $row['taskID'] != $_GET['taskID'])
+             || !array_key_exists("taskID", $_GET)) {
+                printTask($row);
            }
          }
        }

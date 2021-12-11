@@ -96,10 +96,10 @@
 		 value="<?php echo $task_stats['dateStop'] ?>">
 	  <span id="dateStop_input_msg"></span>
 	  <script>
-	    $("#dateStop_input").change( function() {
-		validateMinDate($("#dateStart_input"),
-				$("#dateStop_input"),
-				$("#dateStop_input_msg"));
+	    document.getElementById("dateStop_input").addEventListener("change", function() {
+		validateMinDate(document.getElementById("dateStart_input"),
+				document.getElementById("dateStop_input"),
+				document.getElementById("dateStop_input_msg"));
 	    });
 	  </script>
 	</div>
@@ -111,13 +111,13 @@
 	<div>
 	  <label>Time Stop</label>:
 	  <input id="timeStop_input" type="time" name="timeStop" class="mov"
-		 value="<?php echo $task_stats['taskStop'] ?>">
+		 value="<?php echo $task_stats['timeStop'] ?>">
 	  <span id="timeStop_input_msg"></span>
 	  <script>
-	    $("#timeStop_input").change( function() {
-		validateMinDate($("#timeStart_input"),
-				$("#timeStop_input"),
-				$("#timeStop_input_msg"));
+	    document.getElementById("timeStop_input").addEventListener("change", function() {
+		validateMinDate(document.getElementById("timeStart_input"),
+				document.getElementById("timeStop_input"),
+				document.getElementById("timeStop_input_msg"));
 	    });
 	  </script>
 	</div>
@@ -128,14 +128,14 @@
 	  <label for="color">Color: </label>
 	  <select id="color_selector" name="color" class="mov">
 	    <option value="NULL" <?php if ($task_stats['color'] == NULL) echo 'selected' ?>>None</option>
-	    <option value="aqua" <?php if ($task_stats['color'] == 'aqua') echo 'selected' ?>>Aqua</option>
-	    <option value="chartreuse" <?php if ($task_stats['color'] == 'chartreuse') echo 'selected' ?>>Chartreuse</option>
-	    <option value="darkorchid" <?php if ($task_stats['color'] == 'darkorchid') echo 'selected' ?>>Dark Orchid</option>
-	    <option value="crimson" <?php if ($task_stats['color'] == 'crimson') echo 'selected' ?>>Crimson</option>
-	    <option value="darkgoldenrod" <?php if ($task_stats['color'] == 'darkgoldenrod') echo 'selected' ?>>Dark Golden Rod</option>
+	    <option value="aquamarine" <?php if ($task_stats['color'] == 'aquamarine') echo 'selected' ?>>Aquamarine</option>
+	    <option value="darkseagreen" <?php if ($task_stats['color'] == 'darkseagreen') echo 'selected' ?>>Dark Sea Green</option>
+	    <option value="mediumorchid" <?php if ($task_stats['color'] == 'mediumorchid') echo 'selected' ?>>Medium Orchid</option>
+	    <option value="lightcoral" <?php if ($task_stats['color'] == 'lightcoral') echo 'selected' ?>>Light Coral</option>
+	    <option value="cornsilk" <?php if ($task_stats['color'] == 'cornsilk') echo 'selected' ?>>Corn Silk</option>
 	    <option value="lightseagreen" <?php if ($task_stats['color'] == 'lightseagreen') echo 'selected' ?>>Light Sea Green</option>
-	    <option value="steelblue" <?php if ($task_stats['color'] == 'steelblue') echo 'selected' ?>>Steel Blue</option>
-	    <option value="meduiumvioletred" <?php if ($task_stats['color'] == 'mediumvioletred') echo 'selected' ?>>Medium Violet Red</option>
+	    <option value="lightsteelblue" <?php if ($task_stats['color'] == 'lightsteelblue') echo 'selected' ?>>Light Steel Blue</option>
+	    <option value="mediumvioletred" <?php if ($task_stats['color'] == 'mediumvioletred') echo 'selected' ?>>Medium Violet Red</option>
 	  </select>
 	</div>
 	<div>
@@ -164,7 +164,7 @@
 	     foreach($tasks as $t) {
 	            if ($t['isFolder']) {
 		    echo "<option id=\"opt$t[taskID]\" style=\"background-color: $t[color]\" value=\"$t[taskID]\" ";
-		        if ($task_stats['fID'] == $t['taskID']) echo 'selected';
+		        if (array_key_exists('fID', $task_stats) && $task_stats['fID'] == $t['taskID']) echo 'selected';
 	                  echo ">$t[taskName]</option>\n";
                     }
                   }
