@@ -90,14 +90,14 @@ function printDay($q, $t) {
 
 	 // While there is a day left in the month query, $f equals that day
 	 while ($f = $q->fetch_assoc()) {
-	 
+
 	       // If it is outside of the current viewing month, display it darker.
 	       if ($f['month'] != date_format(date_create($_GET['viewdate']), "n")) {
-               	  echo '<div style="background-color: darkgrey;">';
+               	  echo "<div id=\"oom$f[day]\" style=\"background-color: darkgrey;\">";
 		  printDayTasks($f, $t);
 	    	  echo '</div>';
                } else {
-                  echo '<div style="background-color: grey;">';
+	       	  echo "<div id=\"im$f[day]\" style=\"background-color: grey;\">";
 	          printDayTasks($f, $t);
 	          echo '</div>';
                }

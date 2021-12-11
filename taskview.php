@@ -33,10 +33,11 @@
       
       <?php
 
+       // Retrieve data and sort ascending by folder and folder content.
        $arr = $tasks->fetch_all(MYSQLI_ASSOC);
        $sorted_arr = sortByFolder($arr);
 
-      
+       // If a folder ID is given, first print that folder.
        if (array_key_exists("taskID", $_GET)) {
            $pop = array_filter($sorted_arr, "filterFolderParent");
            $val = array_shift($pop);
@@ -46,6 +47,7 @@
          printTask($val);
        }
 
+       // Prints the whole list or according to folder ID.
        if (count($sorted_arr) > 0) {
          foreach ($sorted_arr as $row) {
            if ((array_key_exists("taskID", $_GET)
@@ -68,6 +70,14 @@
       });
       $("#button_addtask").click(function() {assign("addtask.php");});
       $("#button_logout").click(function() {assign("logout.php");});
+
+      <?php
+      foreach ($sorted_arr as $t) {
+	  if($t['fID'] != 0 && $t['isFolder'] == 0) {
+	      echo "$(\"#$t[taskID]\").css(\"width\", \"95%\");\n";
+	  }
+      }
+      ?>
 
       function assign(link) {
           window.location.assign(link);

@@ -127,7 +127,7 @@
 	      ?>>
 	  <label for="color">Color: </label>
 	  <select id="color_selector" name="color" class="mov">
-	    <option value="NULL" <?php if ($task_stats['color'] == NULL) echo 'selected' ?>>None</option>
+	    <option value="lightgrey" <?php if ($task_stats['color'] == NULL || $task_stats['color'] == 'lightgrey') echo 'selected' ?>>None</option>
 	    <option value="aquamarine" <?php if ($task_stats['color'] == 'aquamarine') echo 'selected' ?>>Aquamarine</option>
 	    <option value="darkseagreen" <?php if ($task_stats['color'] == 'darkseagreen') echo 'selected' ?>>Dark Sea Green</option>
 	    <option value="mediumorchid" <?php if ($task_stats['color'] == 'mediumorchid') echo 'selected' ?>>Medium Orchid</option>

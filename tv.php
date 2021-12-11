@@ -3,7 +3,7 @@
 function printTask($t) {
 
 	echo "<div style=\"background-color: $t[color]\" class=\"list-content-div\" id=\"$t[taskID]\">
-	<p width=\"90%\"><strong>$t[taskName]</strong>";
+	<span style=\"float: left;\"><strong>$t[taskName]</strong>";
 	if ($t['taskDetails']) {
 	   echo "<strong>: </strong>" . $t['taskDetails'] ;
 	}
@@ -27,7 +27,7 @@ function printTask($t) {
 	   echo "<br><b>Folder ID: </b>" . $t['fID'] ;
 	}
 
-	echo "<br></p>
+	echo "<br></span>
 			<div id=\"d$t[taskID]\" class=\"delete_task\">D</div>
 			<div id=\"m$t[taskID]\" class=\"modify_task\">M</div>";
 			if ($t['isFolder'] != 0) {
