@@ -20,11 +20,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <div class="greetings-box">
-    <h1>Hello, <?php echo $session_name ?></h1>
+    <h1>Hello, <?php echo $session_name . "! Today's Date: " . date("m-d-Y")?></h1>
+    <img class="taskviewImage" src="images/pic1.png" alt="taskviewicon" style="width:85px;height:100px;">
+    <img class="taskviewImage2" src="images/pic1.png" alt="taskviewicon" style="width:85px;height:100px;">
   </div>
 
   <body>
-    <div class="sidebar">
+    <div class="newTasksidebar">
 
       <a href="taskview.php" class="myButton">Task List</a>
       <a href="calendarview.php" class="myButton">Calender</a>
@@ -32,6 +34,9 @@
       <a href="logout.php" class="myButton">Logout</a>
 
     </div>
+
+
+
 
     <script type="text/javascript">
   function assign(link) {
@@ -52,18 +57,16 @@
     </div>
 
     <script type="text/javascript">
-    document.getElementById("task_list_div").addEventListener("click", href="calview.php";});
-      $("#cal_div").click(function() {
-	  let d = new Date(Date.now());
-	  assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
-      });
-      $("#button_addtask").click(function() {assign("addtask.php");});
-    document.getElementById("button_logout").addEventListener("click", function() {assign("logout.php");});
+    $("#cal_div").click(function() {
+  let d = new Date(Date.now());
+  assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
+    });
+    $("#button_addtask").click(function() {assign("addtask.php");});
+    $("#button_logout").click(function() {assign("logout.php");});
 
-      function assign(link) {
-          window.location.assign(link);
-      }
-
+    function assign(link) {
+        window.location.assign(link);
+    }
     </script>
   </body>
 

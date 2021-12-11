@@ -2,6 +2,8 @@
 <html lang="en">
   <?php
    require("conn.php");
+    require("acquireid.php");
+    require("tv.php");
    ?>
   <head>
     <meta charset="utf-8">
@@ -50,7 +52,7 @@
 	}
 	 ?>
 
-      <h1><?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task</h1>
+      <h1 style="text-align: center;"><?php echo ($taskID !=  FALSE) ? 'Hello ' . $session_name . ', Modify Your' : 'Hello ' . $session_name . ', Add A'; ?> Task.</h1>
       <form
 	action="<?php echo ($taskID !=  FALSE) ? "modify_task.php?taskID=${taskID}" : 'insert_task.php'; ?>"
 	method="post">
@@ -58,14 +60,14 @@
 	  div {
 	      width: 100%;
 	      border-radius: 10px;
-	      border: 1px dashed black;
+	      border: 2px solid black;
 	      padding: 10px;
-	      background-color: lightgrey;
+	      background-color: rgba(0, 0, 0, 0);
 	      font-size: 20px;
 	  }
 
 	  input[type=text] {
-	      width: 40%;
+	      width: 90%;
 	      padding: 12px 20px;
 	      margin: 8px 0;
 	      border: none;
@@ -96,7 +98,7 @@
 	<div>
 
 	  <label>Title</label>:
-	  <input type="text" name="title" class="mov"
+	  <input type="text" placeholder="Please Enter the Title of Your Task." name="title" class="mov"
 		 value="<?php echo $task_stats['taskName'] ?>" required><br>
 	</div>
 	<div>
@@ -137,7 +139,7 @@
 	</div>
 	<div>
 	  <label>Details</label>:
-	  <input type="text" name="details" class="mov"
+	  <input type="text" placeholder="Please Enter the Details of Your Task." name="details" class="mov"
 		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
 	</div>
 	<input type="submit" value="<?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task!" id="submit">

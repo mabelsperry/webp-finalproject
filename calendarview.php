@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <?php 
+  <?php
    $GLOBALS['viewdate'] = $_GET['viewdate'];
    require("cal.php");
    ?>
@@ -19,17 +19,18 @@
          window.location.assign(link);
         }
     </script>
-    
+
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
-    
+
     <div class="sidebar">
-      <div id="task_list_div"><p><strong>Task List</strong></p></div>
-      <div id="cal_div"><p><strong>Calendar</strong></p></div>
-      <button id="button_addtask">+</button>
-      <button id="button_logout">L</button>
-     
+
+      <button id="task_list_div" class="myButton">Task List</button>
+      <button id="cal_div" class="myButton">Calendar</button>
+      <button id="button_addtask" class="myButton">Add Task</button>
+      <button id="button_logout" class="myButton">Logout</button>
+
       <script type="text/javascript">
 	$("#task_list_div").click(function() {assign("taskview.php");});
 	$("#cal_div").click(function() {
@@ -44,13 +45,13 @@
     <?php $tasks_as_assoc_array = $tasks->fetch_all(MYSQLI_ASSOC); ?>
 
     <div id="cal-control">
-      
-      <h1><?php 
+
+      <h1 style="text-align: center;"><?php
 	   $d = date_create($viewdate);
-	   echo date_format($d, "M");
+	   echo date_format($d, "M-Y");
 	   ?></h1>
-      <button class="button cal_control_button" id="sub_month">-</button>
-      <button class="button cal_control_button" id="add_month">+</button>
+      <button class="CalButton" id="sub_month">Previous Month</button>
+      <button class="CalButton" id="add_month">Next Month</button>
 
       <script type="text/javascript">
 	$("#sub_month").click( function() {
@@ -66,14 +67,14 @@
       </script>
     </div>
     <div id="cal-content-area">
-    
+
       <!-- printDay method is located in cal.php. There's a foreach method that echos the HTML code
 	   that handles how the individual tasks should look.-->
 
       <?php printDay($month_query, $tasks_as_assoc_array); ?>
-      
+
     </div>
-    
+
   </body>
-  
+
 </html>
