@@ -13,5 +13,5 @@
 	  header('Location: createacct.html');
 	}
 
-	
+
 ?>

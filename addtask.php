@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php
-   require("acquireid.php");
-   
+    require("acquireid.php");
+    require("tv.php");
    ?>
   <head>
     <meta charset="utf-8">
     <link href="normalize.css" rel="stylesheet" type="text/css"/>
-    <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="stylesheet.css"  type="text/css"/>
     <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
     <script src="jquery-3.6.0.js"></script>
     <title>Add Task</title>
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
-    
-    <div class="sidebar">
-      <div id="task_list_div"><p><strong>Task List</strong></p></div>
-      <div id="cal_div"><p><strong>Calendar</strong></p></div>
-      <button id="button_addtask">+</button>
-      <button id="button_logout">L</button>
+    <script type="text/javascript">
+      function assign(link) {
+          window.location.assign(link);
+      }
+    </script>
+
+    <div class="newTasksidebar">
+      <div id="task_list_div" class="myButton"><p><strong>Task List</strong></p></div>
+      <div id="cal_div" class="myButton"><p><strong>Calendar</strong></p></div>
+      <div id="button_addtask" class="myButton"><p><strong>Add Task</strong></p></div>
+      <div id="button_logout" class="myButton"><p><strong>Logout</strong></p></div>
+
+      <script type="text/javascript">
+	$("#task_list_div").click(function() {assign("taskview.php");});
+	$("#cal_div").click(function() {
+	    let d = new Date(Date.now());
+	    assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
+	});
+	$("#button_addtask").click(function() {assign("addtask.php");});
+	$("#button_logout").click(function() {assign("logout.php");});
+      </script>
+>>>>>>> calendar-is-added
     </div>
-    
+
     <div id="list-content-area">
 
       <?php
 	 $taskID = filter_input(INPUT_GET, 'taskID',FILTER_VALIDATE_INT);
 	 if ($taskID !=  FALSE) {
 	   $task_stats = $conn->query("SELECT tasks.* FROM tasks WHERE taskID=${taskID}");
-	   $task_stats = $task_stats->fetch_assoc();	   
+	   $task_stats = $task_stats->fetch_assoc();
 	} else {
 	   $task_stats = array("taskName"=>"", "dateStart"=>"", "dateStop"=>"",
                                "timeStart"=>"", "timeStop"=>"", "taskDetails"=>"",
                                "isFolder"=>"0", "folderID"=>"0", "color"=>"NULL");
 	}
 	 ?>
-      
-      <h1><?php echo ($taskID !=  FALSE) ? 'Modify' : 'Add'; ?> Task</h1>
+
+      <h1 style="text-align: center;">
+	<?php echo ($taskID !=  FALSE) ? 'Hello ' . $session_name . ', modify a' : 'Hello ' . $session_name . ', add a'; ?> task!</h1>
       <form
 	action="<?php echo ($taskID !=  FALSE) ? "modify_task.php?taskID=${taskID}" : 'insert_task.php'; ?>"
 	method="post">
 	<style>
 	  form > div {
 	      width: 100%;
-	      border: 1px dashed black;
+	      border-radius: 10px;
+	      border: 2px solid black;
 	      padding: 10px;
-	      background-color: lightgrey;
 	      font-size: 20px;
-	      display: block;
 	  }
 
 	  input[type=text] {
-	      width: 40%;
+	      width: 90%;
 	      padding: 12px 20px;
 	      margin: 8px 0;
 	      border: none;
@@ -64,7 +80,7 @@
 		  msg.innerHTML = "Input invalid :(";
 	      } else {
 		  msg.innerHTML = "Input valid :)";
-	      } 
+	      }
 	  }
 
 
@@ -78,11 +94,11 @@
 	  }
 
 	</script>
-	
+
 	<div>
-	  
+
 	  <label>Title</label>:
-	  <input type="text" name="title" class="mov"
+	  <input type="text" placeholder="Please Enter the Title of Your Task." name="title" class="mov"
 		 value="<?php echo $task_stats['taskName'] ?>" required><br>
 	</div>
 	<div>
@@ -140,6 +156,7 @@
 	</div>
 	<div>
 	  <label>Details</label>:
+<<<<<<< HEAD
 	  <input type="text" name="details" class="mov" style="height: 200px;"
 		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
 	</div>

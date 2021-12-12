@@ -20,7 +20,6 @@ function printTask($t) {
 	if ( strncasecmp($t['timeStop'], "00:00:00", 11 ) != 0 ) {
 	   echo "<br><b>End Time: </b>" . $t['timeStop'] ;
 	}
-
 	echo "<br><b>Task ID: </b>" . $t['taskID'] ;
 
 	if ($t['fID'] != 0 && $t['fID'] != NULL) {
