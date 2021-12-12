@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php
-   require("conn.php");
     require("acquireid.php");
     require("tv.php");
    ?>
@@ -22,11 +21,11 @@
       }
     </script>
 
-    <div class="AddTasksidebar">
-      <a href="taskview.php" class="myButton">Task List</a>
-      <a href="calendarview.php" class="myButton">Calender</a>
-      <a href="addtask.php" class="myButton">Add Task</a>
-      <a href="logout.php" class="myButton">Logout</a>
+    <div class="newTasksidebar">
+      <div id="task_list_div" class="myButton"><p><strong>Task List</strong></p></div>
+      <div id="cal_div" class="myButton"><p><strong>Calendar</strong></p></div>
+      <div id="button_addtask" class="myButton"><p><strong>Add Task</strong></p></div>
+      <div id="button_logout" class="myButton"><p><strong>Logout</strong></p></div>
 
       <script type="text/javascript">
 	$("#task_list_div").click(function() {assign("taskview.php");});
@@ -52,7 +51,8 @@
 	}
 	 ?>
 
-      <h1 style="text-align: center;"><?php echo ($taskID !=  FALSE) ? 'Hello ' . $session_name . ', Modify Your' : 'Hello ' . $session_name . ', Add A'; ?> Task.</h1>
+      <h1 style="text-align: center;">
+	<?php echo ($taskID !=  FALSE) ? 'Hello ' . $session_name . ', modify a' : 'Hello ' . $session_name . ', add a'; ?> task!</h1>
       <form
 	action="<?php echo ($taskID !=  FALSE) ? "modify_task.php?taskID=${taskID}" : 'insert_task.php'; ?>"
 	method="post">
@@ -62,7 +62,6 @@
 	      border-radius: 10px;
 	      border: 2px solid black;
 	      padding: 10px;
-	      background-color: rgba(0, 0, 0, 0);
 	      font-size: 20px;
 	  }
 

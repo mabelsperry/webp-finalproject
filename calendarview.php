@@ -16,19 +16,20 @@
 
     <script type="text/javascript">
       function assign(link) {
-         window.location.assign(link);
-        }
+          window.location.assign(link);
+      }
     </script>
 
   </head>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <body>
 
     <div class="newTasksidebar">
-      <div id="task_list_div" class="myButton"><p><strong>Task List</strong></p></div>
-      <div id="cal_div" class="myButton"><p><strong>Calendar</strong></p></div>
-      <div id="button_addtask" class="myButton"><p><strong>Add Task</strong></p></div>
-      <div id="button_logout" class="myButton"><p><strong>Logout</strong></p></div>
+      <div id="task_list_div" class="myButton"><span><strong>Task List</strong></span></div>
+      <div id="cal_div" class="myButton"><span><strong>Calendar</strong></span></div>
+      <div id="button_addtask" class="myButton"><span><strong>Add Task</strong></span></div>
+      <div id="button_logout" class="myButton"><span><strong>Logout</strong></span></div>
 
       <script type="text/javascript">
 	$("#task_list_div").click(function() {assign("taskview.php");});
@@ -45,12 +46,12 @@
 
     <div id="cal-control">
 
-      <h1 style="text-align: center;"><?php
+      <h1 style="text-align: center; width: 100%;"><?php
 	   $d = date_create($viewdate);
 	   echo date_format($d, "M-Y");
-	   ?></h1>
-      <button class="CalButton" id="sub_month">Previous Month</button>
-      <button class="CalButton" id="add_month">Next Month</button>
+	   ?></h1><br>
+      <div class="CalButton" id="sub_month">Previous Month</div>
+      <div class="CalButton" id="add_month">Next Month</div>
 
       <script type="text/javascript">
 	$("#sub_month").click( function() {
