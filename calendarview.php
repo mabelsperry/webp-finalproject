@@ -26,6 +26,9 @@
   <body>
 
     <div class="newTasksidebar">
+      <div class="Loginimgcontainer" style="height: 100px;">
+	<img src="AVATAR3.png" alt="Avatar" class="avatar" style="width:100px;height:100px;">
+      </div>
       <div id="task_list_div" class="myButton"><span><strong>Task List</strong></span></div>
       <div id="cal_div" class="myButton"><span><strong>Calendar</strong></span></div>
       <div id="button_addtask" class="myButton"><span><strong>Add Task</strong></span></div>
@@ -48,7 +51,7 @@
 
       <h2 style="text-align: center; width: 100%;"><?php
 	   $d = date_create($viewdate);
-	   echo date_format($d, "M-Y");
+	   echo date_format($d, "M Y");
 	   ?></h2><br>
       <div class="CalButton" id="sub_month">Previous Month</div>
       <div class="CalButton" id="add_month">Next Month</div>

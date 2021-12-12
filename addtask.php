@@ -21,10 +21,13 @@
     </script>
 
     <div class="newTasksidebar">
-      <div id="task_list_div" class="myButton"><p><strong>Task List</strong></p></div>
-      <div id="cal_div" class="myButton"><p><strong>Calendar</strong></p></div>
-      <div id="button_addtask" class="myButton"><p><strong>Add Task</strong></p></div>
-      <div id="button_logout" class="myButton"><p><strong>Logout</strong></p></div>
+      <div class="Loginimgcontainer" style="height: 100px;">
+	<img src="AVATAR3.png" alt="Avatar" class="avatar" style="width:100px;height:100px;">
+      </div>
+      <div id="task_list_div" class="myButton"><span><strong>Task List</strong></span></div>
+      <div id="cal_div" class="myButton"><span><strong>Calendar</strong></span></div>
+      <div id="button_addtask" class="myButton"><span><strong>Add Task</strong></span></div>
+      <div id="button_logout" class="myButton"><span><strong>Logout</strong></span></div>
 
       <script type="text/javascript">
 	$("#task_list_div").click(function() {assign("taskview.php");});

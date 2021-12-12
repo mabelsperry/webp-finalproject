@@ -39,7 +39,6 @@ if ($timeStop == "" || $timeStop == NULL) {
    $timeStop = "00:00:00";
 }
 
-<<<<<<< HEAD
 if ($isFolder != '') {
    $sql = "UPDATE `tasks` 
    	   SET `taskName` = '$title',
