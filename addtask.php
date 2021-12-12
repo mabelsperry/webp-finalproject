@@ -35,7 +35,6 @@
 	$("#button_addtask").click(function() {assign("addtask.php");});
 	$("#button_logout").click(function() {assign("logout.php");});
       </script>
->>>>>>> calendar-is-added
     </div>
 
     <div id="list-content-area">
@@ -152,11 +151,11 @@
 	    <option value="lightseagreen" <?php if ($task_stats['color'] == 'lightseagreen') echo 'selected' ?>>Light Sea Green</option>
 	    <option value="lightsteelblue" <?php if ($task_stats['color'] == 'lightsteelblue') echo 'selected' ?>>Light Steel Blue</option>
 	    <option value="mediumvioletred" <?php if ($task_stats['color'] == 'mediumvioletred') echo 'selected' ?>>Medium Violet Red</option>
+	    <option value="orange" <?php if ($task_stats['color'] == 'orange') echo 'selected' ?>>Orange</option>
 	  </select>
 	</div>
 	<div>
 	  <label>Details</label>:
-<<<<<<< HEAD
 	  <input type="text" name="details" class="mov" style="height: 200px;"
 		 value="<?php echo $task_stats['taskDetails'] ?>"><br>
 	</div>
@@ -203,15 +202,6 @@
       $("#color_selector").change(function() {
           $("#color_selector_div").css("background-color", $("#color_selector").val());
       });
-      $("#folderID").change(function() {
-          var folderval = $("#folderID").val();
-          $("#color_selector").val($("#opt" + folderval).css("background-color"));
-      });
-
-      function assign(link) {
-      window.location.assign(link);
-      }
-
     </script>
   </body>
 

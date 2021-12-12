@@ -13,12 +13,6 @@
     <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
     <script src="jquery-3.6.0.js"></script>
     <title>List View</title>
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> calendar-is-added
   </head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -28,14 +22,6 @@
       <div id="cal_div" class="myButton"><span><strong>Calendar</strong></span></div>
       <div id="button_addtask" class="myButton"><span><strong>Add Task</strong></span></div>
       <div id="button_logout" class="myButton"><span><strong>Logout</strong></span></div>
-
-<<<<<<< HEAD
-      <div id="task_list_div"><p><strong>Task List</strong></p></div>
-      <div id="cal_div"><p><strong>Calendar</strong></p></div>
-      <button id="button_addtask">+</button>
-      <button id="button_logout">L</button>
-=======
->>>>>>> calendar-is-added
     </div>
 
     <script type="text/javascript">
@@ -43,8 +29,14 @@
 	  window.location.assign(link);
       }
     </script>
+       
+    <div class="greetings-box">
+      <h1>Hello, <?php echo $session_name . "! Today's Date is " . date("M d, Y")?></h1>
+    </div>
 
-<<<<<<< HEAD
+    <div id="list-content-area">
+
+      <?php
        // Retrieve data and sort ascending by folder and folder content.
        $arr = $tasks->fetch_all(MYSQLI_ASSOC);
        $sorted_arr = sortByFolder($arr);
@@ -67,30 +59,10 @@
              && $row['taskID'] != $_GET['taskID'])
              || !array_key_exists("taskID", $_GET)) {
                 printTask($row);
-           }
-=======
-    <div class="greetings-box">
-      <h1>Hello, <?php echo $session_name . "! Today's Date is " . date("M d, Y")?></h1>
-    </div>
-
-    <div id="list-content-area">
-
-      <?php
-       $noResults = "No Tasks Yet.";
-       if ($tasks->num_rows > 0) {
-         while ($row = $tasks->fetch_assoc()) {
-            printTask($row);
->>>>>>> calendar-is-added
-         }
-       }
-       else {
-         echo "<p style='color: black;
-               font-size: 20px;
-               bottom: 100px;
-               text-align: center;
-               padding-top: 200px;'>" . "No tasks yet!" . "</p>";
-       }
-      ?>
+        }
+	}
+	}
+       ?>
 
     </div>
 

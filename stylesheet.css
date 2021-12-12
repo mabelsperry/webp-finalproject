@@ -10,9 +10,10 @@ span {
 .greetings-box {
     /* Display */
     text-align: center;
+    height: 100px;
     
     /* Placement */
-    width: 88%;
+    width: 89.8%;
     float: right;
 
     /* Appearance */
@@ -24,7 +25,7 @@ span {
     position: fixed;
     display: flex;
     flex-direction: column;
-    width: 11.8%;
+    width: 10%;
     
     /* Placement */
     float: left;
@@ -81,8 +82,8 @@ span {
 #cal-control {
     /* Display */
     display: flex;
-    width: 88%;
-    height: 150px;
+    width: 89.8%;
+    height: 100px;
     justify-content: center;
     flex-direction: row;
     flex-wrap: wrap;
@@ -95,6 +96,37 @@ span {
     border: 1px solid black;
 }
 
+.CalButton {
+    /* Display */
+    cursor: pointer;
+    font-family: Arial;
+    font-size: 16px;
+    padding: 5px 15px;
+    width: 25%;
+    text-align: center;
+    vertical-align: middle;
+    
+    /* Placement */
+    align-self: center;
+
+    /* Appearance */
+    background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
+    background-color: #7892c2;
+    box-shadow: 0px 0px 0px 2px #9fb4f2;
+    text-shadow: 0px 1px 0px #283966;
+    color: #ffffff;
+}
+
+.CalButton:hover {
+    background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
+    background-color:#476e9e;
+}
+
+.CalButton:active {
+    position:relative;
+    top:1px;
+}
+
 #cal-content-area {
     /* Display */
     display: flex;
@@ -105,7 +137,7 @@ span {
     float: right;
 
     /* Appearance */
-    width: 88%;
+    width: 89.8%;
     height: 1000px;
     background-color: white;
     border: 1px solid black;
@@ -135,21 +167,11 @@ span {
     cursor: pointer;
 }
 
-#cal-content-area > div:hover {
-    width: 14.2857%;
-    border: 1px dashed black;
-    border-radius: 5px;
-    padding: 10px;
-    background-color: lightblue;
-    font-size: 20px;
-    cursor: pointer;
-}
-
 #list-content-area {
     /* Display */
     display: flex;
     flex-direction: column;
-    width: 88%;
+    width: 89.8%;
     /* Placement */
     float: right;
     /* Appearance */
@@ -241,25 +263,6 @@ span {
     cursor: pointer;
 }
 
-#addtask-content-area {
-    display: flex;
-    flex-direction: column;
-    float: left;
-    width: 88%;
-    height: 1000px;
-    background-color: grey;
-    border: 1px solid black;
-}
-
-#addtask-content-area > div {
-    width: 100%;
-    border-radius: 10px;
-    border: 1px solid black;
-    padding: 10px;
-    background-color: lightgrey;
-    font-size: 20px;
-}
-
 .myButton {
     box-shadow: 0px 0px 0px 2px #9fb4f2;
     background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
@@ -284,37 +287,7 @@ span {
     top:1px;
 }
 
-.CalButton {
-    /* Display */
-    cursor: pointer;
-    font-family: Arial;
-    font-size: 18px;
-    padding: 5px 20px;
-    width: 25%;
-    text-align: center;
-    vertical-align: middle;
-    
-    /* Placement */
-    align-self: center;
 
-    /* Appearance */
-    background: linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
-    background-color: #7892c2;
-    box-shadow: 0px 0px 0px 2px #9fb4f2;
-    text-decoration: none;
-    text-shadow: 0px 1px 0px #283966;
-    color: #ffffff;
-}
-
-.CalButton:hover {
-    background:linear-gradient(to bottom, #476e9e 5%, #7892c2 100%);
-    background-color:#476e9e;
-}
-
-.CalButton:active {
-    position:relative;
-    top:1px;
-}
 
 .addtaskButton {
     position: relative;

@@ -71,7 +71,6 @@ function printDayTasks($row, $t) {
 	 }
 
 	 foreach ($todayTasks as $row) {
-<<<<<<< HEAD
 	 	 echo "<div style=\"background-color: $row[color]\"id=\"dayTask$row[taskID]\"> $row[taskName] </div>";
 		 echo "<script type=\"text/javascript\">
 		      $(\"#dayTask$row[taskID]\").click(function() {assign(\"addtask.php?taskID=$row[taskID]\");});
@@ -83,7 +82,6 @@ function printDayTasks($row, $t) {
 
 function printDay($q, $t) {
 	 while ($f = $q->fetch_assoc()) {
-<<<<<<< HEAD
 	       $q_today = date_create($f['year'] . "-" . $f['month'] . "-" . $f['day']);
 	       $today = date("Y-n-j");
 	       // If it is outside of the current viewing month, display it darker.

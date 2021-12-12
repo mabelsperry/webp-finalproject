@@ -46,10 +46,10 @@
 
     <div id="cal-control">
 
-      <h1 style="text-align: center; width: 100%;"><?php
+      <h2 style="text-align: center; width: 100%;"><?php
 	   $d = date_create($viewdate);
 	   echo date_format($d, "M-Y");
-	   ?></h1><br>
+	   ?></h2><br>
       <div class="CalButton" id="sub_month">Previous Month</div>
       <div class="CalButton" id="add_month">Next Month</div>
 

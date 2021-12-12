@@ -37,7 +37,6 @@ if ($timeStop == "" || $timeStop == NULL) {
    $timeStop = "00:00:00";
 }
 
-<<<<<<< HEAD
 
 $sql = "INSERT INTO `tasks` (`userID`, `taskName`, `taskDetails`, `dateStart`, `dateStop`, `timeStart`, `timeStop`, `fID`, `color`)
         VALUES ('$ID', '$title', '$details', '$dateStart', '$dateStop','$timeStart', '$timeStop', '$folderID', '$color')";
