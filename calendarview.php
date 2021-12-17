@@ -8,8 +8,8 @@
 
   <head>
     <meta charset="utf-8">
-    <link href="normalize.css" rel="stylesheet" type="text/css"/>
-    <link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+    <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
+    <link href="css/stylesheet.css" rel="stylesheet" type="text/css"/>
     <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
     <script src="jquery-3.6.0.js"></script>
     <title>Calendar View</title>
@@ -27,7 +27,7 @@
 
     <div class="newTasksidebar">
       <div class="Loginimgcontainer" style="height: 100px;">
-	<img src="AVATAR3.png" alt="Avatar" class="avatar" style="width:100px;height:100px;">
+	<img src="images/AVATAR3.png" alt="Avatar" class="avatar" style="width:100px;height:100px;">
       </div>
       <div id="task_list_div" class="myButton"><span><strong>Task List</strong></span></div>
       <div id="cal_div" class="myButton"><span><strong>Calendar</strong></span></div>
@@ -49,13 +49,17 @@
 
     <div id="cal-control">
 
-      <h2 style="text-align: center; width: 100%;"><?php
+      <h2 style="text-align: center; width: 100%;">
+	<?php
+	 // Displaying the date at the top of the calendar.
 	   $d = date_create($viewdate);
 	   echo date_format($d, "M Y");
-	   ?></h2><br>
+	 ?>
+      </h2><br>
       <div class="CalButton" id="sub_month">Previous Month</div>
       <div class="CalButton" id="add_month">Next Month</div>
 
+      <!-- Sends the date for the previous or next month through the buttons located at the top of the calendar. -->
       <script type="text/javascript">
 	$("#sub_month").click( function() {
 	    let d = new Date("<?php echo $_GET['viewdate'] ?>" );

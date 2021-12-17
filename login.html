@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html>
-<?php
-
-   require("conn.php");
-
-?>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="normalize.css" type="text/css"/>
-  <link rel="stylesheet" href="stylesheet.css" type="text/css"/>
+  <link rel="stylesheet" href="css/normalize.css" type="text/css"/>
+  <link rel="stylesheet" href="css/stylesheet.css" type="text/css"/>
   <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
   <script src="jquery-3.6.0.js"></script>
   <title>Login</title>
@@ -21,7 +16,7 @@
   <form class="modal-content Loginanimate" action="check.php" method="post">
     <h1 class="LoginHeading">Welcome User</h1>
     <div class="Loginimgcontainer">
-      <img src="AVATAR3.png" alt="Avatar" class="avatar" style="width:100px;height:100px;">
+      <img src="images/AVATAR3.png" alt="Avatar" class="avatar" style="width:100px;height:100px;">
     </div>
     <div class="Logincontainer">
       <label><b>Username</b></label>
@@ -31,27 +26,16 @@
 	<input type="password" placeholder="Enter Password" name="password" required>
 
 	<button type="submit" class="Loginbutton">Login</button>
-	<button type="button" class="Loginbutton">
-	  <a style="text-decoration:none" href="createacct.html">Create User</a>
-	</button>
+	<button type="button" class="Loginbutton" id="createacct">Create New User</button>
 </form>
 </div>
-
-
 </div>
-
-<script>
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == "modal") {
-        modal.style.display = "none";
-    }
-}
-</script>
-
 </body>
+<script type="text/javascript">
+  $("#createacct").click(function() {assign("createacct.html")});
+
+  function assign(link) {
+      window.location.assign(link);
+  }
+</script>
 </html>
-
-
-<?php } ?>

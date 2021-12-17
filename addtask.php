@@ -6,8 +6,8 @@
    ?>
   <head>
     <meta charset="utf-8">
-    <link href="normalize.css" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="stylesheet.css"  type="text/css"/>
+    <link href="css/normalize.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="css/stylesheet.css"  type="text/css"/>
     <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
     <script src="jquery-3.6.0.js"></script>
     <title>Add Task</title>
@@ -22,27 +22,18 @@
 
     <div class="newTasksidebar">
       <div class="Loginimgcontainer" style="height: 100px;">
-	<img src="AVATAR3.png" alt="Avatar" class="avatar" style="width:100px;height:100px;">
+	<img src="images/AVATAR3.png" alt="Avatar" class="avatar" style="width:100px;height:100px;">
       </div>
       <div id="task_list_div" class="myButton"><span><strong>Task List</strong></span></div>
       <div id="cal_div" class="myButton"><span><strong>Calendar</strong></span></div>
       <div id="button_addtask" class="myButton"><span><strong>Add Task</strong></span></div>
       <div id="button_logout" class="myButton"><span><strong>Logout</strong></span></div>
-
-      <script type="text/javascript">
-	$("#task_list_div").click(function() {assign("taskview.php");});
-	$("#cal_div").click(function() {
-	    let d = new Date(Date.now());
-	    assign("calendarview.php?viewdate=" + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
-	});
-	$("#button_addtask").click(function() {assign("addtask.php");});
-	$("#button_logout").click(function() {assign("logout.php");});
-      </script>
     </div>
 
     <div id="list-content-area">
 
       <?php
+       // Retreive information about the task being modified, or initialize an empty task.
 	 $taskID = filter_input(INPUT_GET, 'taskID',FILTER_VALIDATE_INT);
 	 if ($taskID !=  FALSE) {
 	   $task_stats = $conn->query("SELECT tasks.* FROM tasks WHERE taskID=${taskID}");
@@ -60,6 +51,7 @@
 	action="<?php echo ($taskID !=  FALSE) ? "modify_task.php?taskID=${taskID}" : 'insert_task.php'; ?>"
 	method="post">
 	<style>
+	  /* Style code for the form since the form overrides the stylesheet. */
 	  form > div {
 	      width: 100%;
 	      border-radius: 10px;
@@ -67,7 +59,6 @@
 	      padding: 10px;
 	      font-size: 20px;
 	  }
-
 	  input[type=text] {
 	      width: 90%;
 	      padding: 12px 20px;
@@ -77,15 +68,7 @@
 	  }
 	</style>
 	<script>
-	  function checkVal(inpObj, msg) {
-	      if (!inpObj.checkValidity()) {
-		  msg.innerHTML = "Input invalid :(";
-	      } else {
-		  msg.innerHTML = "Input valid :)";
-	      }
-	  }
-
-
+	  // Checks validity of date and time to prevent out-of-order input.
 	  function validateMinDate(inputStart, inputStop, input_msg) {
 	      if (inputStop.value < inputStart.value) {
 		  input_msg.innerHTML = "Cannot be before start date/time.";
@@ -98,7 +81,6 @@
 	</script>
 
 	<div>
-
 	  <label>Title</label>:
 	  <input type="text" placeholder="Please Enter the Title of Your Task." name="title" class="mov"
 		 value="<?php echo $task_stats['taskName'] ?>" required><br>
@@ -114,6 +96,8 @@
 		 value="<?php echo $task_stats['dateStop'] ?>">
 	  <span id="dateStop_input_msg"></span>
 	  <script>
+	    // Could not get jQuery to work for these events for some reason.
+	    // Calls the validateMinDate function to validate the input.
 	    document.getElementById("dateStop_input").addEventListener("change", function() {
 		validateMinDate(document.getElementById("dateStart_input"),
 				document.getElementById("dateStop_input"),
@@ -132,6 +116,7 @@
 		 value="<?php echo $task_stats['timeStop'] ?>">
 	  <span id="timeStop_input_msg"></span>
 	  <script>
+	    // Calls the validateMinDate function to validate the input.
 	    document.getElementById("timeStop_input").addEventListener("change", function() {
 		validateMinDate(document.getElementById("timeStart_input"),
 				document.getElementById("timeStop_input"),
@@ -167,6 +152,7 @@
 	  <label for="isFolder" >Is a folder?</label>
 	  <script>
 	    $("#isFolderBox").click( function() {
+		// Hides the "Select Folder" option if it is a folder.
 		if(this.checked) {
 		    document.getElementById("fID").style.display = "none";
 		} else {

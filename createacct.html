@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html>
-<?php
-
-   require("conn.php");
-
-   if (isset($_COOKIE['mycookie']))
-   {
-       header('Location: taskview.php');
-   } else {
-   ?>
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="normalize.css" type="text/css"/>
-  <link rel="stylesheet" href="stylesheet.css" type="text/css"/>
+  <link rel="stylesheet" href="css/normalize.css" type="text/css"/>
+  <link rel="stylesheet" href="css/stylesheet.css" type="text/css"/>
   <!-- NEED TO IMPORT THIS: https://code.jquery.com/jquery-3.6.0.js -->
   <script src="jquery-3.6.0.js"></script>
   <title>Login</title>
@@ -22,7 +13,6 @@
 <body class="Loginbody">
 
 <div id="id01" class="modal">
-
   <form class="modal-content Loginanimate" action="createacct.php" method="post">
   <h1 class="LoginHeading">Welcome New User</h1>
     <div class="Loginimgcontainer">
@@ -37,22 +27,20 @@
       <label><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" id='password' required>
       <button type="submit" class="Loginbutton"><a style="text-decoration:none" >Create User</a></button>
+      <button type="button" class="Loginbutton" id="backtologin">Back to Login Page</button>
     </form>
-      <label>
-        <input type="checkbox" value=1 name="check"> Remember me
-      </label>
     </div>
 
 
 </div>
 
-<script>
+<script type="text/javascript">
+$("#backtologin").click(function() {assign("login.html")});
 
-
+  function assign(link) {
+      window.location.assign(link);
+  }
 </script>
 
 </body>
 </html>
-
-
-<?php } ?>
